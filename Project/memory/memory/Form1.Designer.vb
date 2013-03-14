@@ -22,8 +22,11 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.btnPlay = New System.Windows.Forms.Button()
         Me.lblTweeAfbeeldingen = New System.Windows.Forms.Label()
+        Me.TijdAfbTonenNietGelijk = New System.Windows.Forms.Timer(Me.components)
+        Me.TijdAfbTonenGelijk = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'btnPlay
@@ -45,6 +48,14 @@ Partial Class frmMain
         Me.lblTweeAfbeeldingen.Size = New System.Drawing.Size(159, 44)
         Me.lblTweeAfbeeldingen.TabIndex = 1
         '
+        'TijdAfbTonenNietGelijk
+        '
+        Me.TijdAfbTonenNietGelijk.Interval = 500
+        '
+        'TijdAfbTonenGelijk
+        '
+        Me.TijdAfbTonenGelijk.Interval = 500
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -63,5 +74,7 @@ Partial Class frmMain
     End Sub
     Friend WithEvents btnPlay As System.Windows.Forms.Button
     Friend WithEvents lblTweeAfbeeldingen As System.Windows.Forms.Label
+    Friend WithEvents TijdAfbTonenNietGelijk As System.Windows.Forms.Timer
+    Friend WithEvents TijdAfbTonenGelijk As System.Windows.Forms.Timer
 
 End Class

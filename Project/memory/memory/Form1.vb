@@ -2,6 +2,7 @@
     Dim Afbeeldingen As New List(Of Image)
     Dim Kaarten As New List(Of KeyValuePair(Of Integer, Image))
     Dim AfbTeZien As New List(Of Image)
+    Dim GekliktePicBox As New List(Of PictureBox)
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         MaakVeld()
@@ -71,21 +72,19 @@
     Private Sub PictureBoxOnMouseClick(ByVal sender As PictureBox, ByVal e As System.EventArgs)
         If AfbTeZien.Count = 1 Then
             sender.Image = Kaarten(sender.Name).Value
+            GekliktePicBox.Add(sender)
             AfbTeZien.Add(sender.Image)
             If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1)) Then
                 ' De afbeeldingen zijn gelijk
-                Me.Controls(sender.Name).BackColor = Color.Red
-
-
-
+                TijdAfbTonenGelijk.Start()
             Else
                 ' De afbeeldingen zijn niet gelijk
-
-
+                TijdAfbTonenNietGelijk.Start()
             End If
             AfbTeZien.Clear()
         Else
             sender.Image = Kaarten(sender.Name).Value
+            GekliktePicBox.Add(sender)
             AfbTeZien.Add(sender.Image)
         End If
     End Sub
@@ -107,6 +106,7 @@
             If (TypeOf cntrl Is PictureBox) Then
                 Dim picBox As PictureBox
                 picBox = cntrl
+                picBox.BackColor = Color.LightGray
                 picBox.Image = AfbeeldingInstellen()
                 Kaarten.Add(New KeyValuePair(Of Integer, Image)(aantal, picBox.Image))
                 picBox.Image = My.Resources.achterkant
@@ -114,5 +114,21 @@
                 aantal += 1
             End If
         Next
+    End Sub
+
+    Private Sub TijdAfbTonen_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAfbTonenNietGelijk.Tick
+        TijdAfbTonenNietGelijk.Stop()
+        GekliktePicBox(0).Image = My.Resources.achterkant
+        GekliktePicBox(1).Image = My.Resources.achterkant
+        GekliktePicBox.Clear()
+    End Sub
+
+    Private Sub TijdAfbTonenGelijk_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAfbTonenGelijk.Tick
+        TijdAfbTonenGelijk.Stop()
+        GekliktePicBox(0).BackColor = Color.Aquamarine
+        GekliktePicBox(1).BackColor = Color.Aquamarine
+
+        GekliktePicBox.Clear()
+
     End Sub
 End Class
