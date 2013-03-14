@@ -1,7 +1,6 @@
 ﻿Public Class frmMain
     Dim Afbeeldingen As New List(Of Image)
     Dim Kaarten As New List(Of KeyValuePair(Of Integer, Image))
-    Dim AantalTeZien As Byte = 0
 
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -67,20 +66,27 @@
 
     Private Sub PictureBoxOnMouseClick(ByVal sender As PictureBox, ByVal e As System.EventArgs)
         Dim afbTeZien As New List(Of Image)
-        If AantalTeZien >= 2 Then
-            'If afbTeZien(0).Equals(afbTeZien(1) 
-            Exit Sub        ' TIJDELIJKE OPLOSSING
+
+        If afbTeZien.Count >= 1 Then
+            If AfbeeldingenVergelijken(afbTeZien(0), afbTeZien(1)) Then
+                MessageBox.Show("Afbeeldingen zijn gelijk?")
+            Else
+                MessageBox.Show("Afbeeldingen niet gelijk?")
+            End If
+        Else
+            sender.Image = Kaarten(sender.Name).Value
+            afbTeZien.Add(sender.Image)
         End If
-
-
-        sender.Image = Kaarten(sender.Name).Value
-        afbTeZien.Add(sender.Image)
-        AantalTeZien += 1
-        'If AantalTeZien = 2 Then
-        '    afbTeZien.Clear()
-        '    AantalTeZien = 0
-        'End If
     End Sub
+
+    Function AfbeeldingenVergelijken(ByVal image1 As Image, ByVal image2 As Image) As Boolean
+        ' Hier de afbeeldingen met elkaar vergelijken
+        If image1.Equals(image2) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
     Private Sub btnPlay_Click(sender As Button, e As System.EventArgs) Handles btnPlay.Click
         VoegAfbeeldingenToe()
