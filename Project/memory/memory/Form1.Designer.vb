@@ -23,38 +23,36 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.btnPlay = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.lblTweeAfbeeldingen = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btnPlay
         '
         Me.btnPlay.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPlay.Location = New System.Drawing.Point(741, 631)
-        Me.btnPlay.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnPlay.Location = New System.Drawing.Point(12, 676)
+        Me.btnPlay.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnPlay.Name = "btnPlay"
-        Me.btnPlay.Size = New System.Drawing.Size(76, 41)
+        Me.btnPlay.Size = New System.Drawing.Size(101, 50)
         Me.btnPlay.TabIndex = 0
         Me.btnPlay.Text = "PLAY"
         Me.btnPlay.UseVisualStyleBackColor = True
         '
-        'Button2
+        'lblTweeAfbeeldingen
         '
-        Me.Button2.Location = New System.Drawing.Point(681, 653)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(56, 19)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.lblTweeAfbeeldingen.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTweeAfbeeldingen.Location = New System.Drawing.Point(684, 9)
+        Me.lblTweeAfbeeldingen.Name = "lblTweeAfbeeldingen"
+        Me.lblTweeAfbeeldingen.Size = New System.Drawing.Size(159, 44)
+        Me.lblTweeAfbeeldingen.TabIndex = 1
         '
         'frmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(835, 671)
-        Me.Controls.Add(Me.Button2)
+        Me.ClientSize = New System.Drawing.Size(855, 737)
+        Me.Controls.Add(Me.lblTweeAfbeeldingen)
         Me.Controls.Add(Me.btnPlay)
-        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmMain"
@@ -64,6 +62,6 @@ Partial Class frmMain
 
     End Sub
     Friend WithEvents btnPlay As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents lblTweeAfbeeldingen As System.Windows.Forms.Label
 
 End Class

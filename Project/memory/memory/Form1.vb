@@ -1,13 +1,10 @@
 ﻿Public Class frmMain
     Dim Afbeeldingen As New List(Of Image)
     Dim Kaarten As New List(Of KeyValuePair(Of Integer, Image))
-
+    Dim AfbTeZien As New List(Of Image)
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Me.Size = New Size(1000, 1000)
-
         MaakVeld()
-
     End Sub
 
     Sub MaakVeld()
@@ -20,6 +17,7 @@
                 picBox.AutoSize = False
                 picBox.Location = New Point(170 * j, 170 * i)
                 picBox.SizeMode = PictureBoxSizeMode.AutoSize
+                picBox.Visible = False
 
                 picBox.BorderStyle = BorderStyle.Fixed3D
                 AddHandler picBox.MouseClick, AddressOf PictureBoxOnMouseClick
@@ -30,29 +28,34 @@
     End Sub
 
     Sub VoegAfbeeldingenToe()
-        Afbeeldingen.Add(My.Resources.Afb1)
-        Afbeeldingen.Add(My.Resources.Afb1)
+        Afbeeldingen.Add(My.Resources.Afb1) ' 0  Tag: 0
+        Afbeeldingen.Add(My.Resources.Afb1) ' 1  Tag: 0
 
-        Afbeeldingen.Add(My.Resources.Afb2)
-        Afbeeldingen.Add(My.Resources.Afb2)
+        Afbeeldingen.Add(My.Resources.Afb2) ' 2  Tag: 2
+        Afbeeldingen.Add(My.Resources.Afb2) ' 3  Tag: 2
 
-        Afbeeldingen.Add(My.Resources.Afb3)
-        Afbeeldingen.Add(My.Resources.Afb3)
+        Afbeeldingen.Add(My.Resources.Afb3) ' 4  Tag: 4
+        Afbeeldingen.Add(My.Resources.Afb3) ' 5  Tag: 4
 
-        Afbeeldingen.Add(My.Resources.Afb4)
-        Afbeeldingen.Add(My.Resources.Afb4)
+        Afbeeldingen.Add(My.Resources.Afb4) ' 6  Tag: 6
+        Afbeeldingen.Add(My.Resources.Afb4) ' 7  Tag: 6
 
-        Afbeeldingen.Add(My.Resources.Afb5)
-        Afbeeldingen.Add(My.Resources.Afb5)
+        Afbeeldingen.Add(My.Resources.Afb5) ' 8  Tag: 8
+        Afbeeldingen.Add(My.Resources.Afb5) ' 9  Tag: 8
 
-        Afbeeldingen.Add(My.Resources.Afb6)
-        Afbeeldingen.Add(My.Resources.Afb6)
+        Afbeeldingen.Add(My.Resources.Afb6) ' 10  Tag: 10
+        Afbeeldingen.Add(My.Resources.Afb6) ' 11  Tag: 10
 
-        Afbeeldingen.Add(My.Resources.Afb7)
-        Afbeeldingen.Add(My.Resources.Afb7)
+        Afbeeldingen.Add(My.Resources.Afb7) ' 12  Tag: 12
+        Afbeeldingen.Add(My.Resources.Afb7) ' 13  Tag: 12
 
-        Afbeeldingen.Add(My.Resources.Afb8)
-        Afbeeldingen.Add(My.Resources.Afb8)
+        Afbeeldingen.Add(My.Resources.Afb8) ' 14  Tag: 14
+        Afbeeldingen.Add(My.Resources.Afb8) ' 15  Tag: 14
+
+        For i = 0 To Afbeeldingen.Count - 1 Step 2
+            Afbeeldingen(i).Tag = "Afb" & i
+            Afbeeldingen(i + 1).Tag = "Afb" & i
+        Next
     End Sub
 
     Function AfbeeldingInstellen() As Image
@@ -60,30 +63,39 @@
         Dim randomGetal As Integer = random.Next(Afbeeldingen.Count)
         Dim afb As Image
         afb = Afbeeldingen(randomGetal)
+
         Afbeeldingen.RemoveAt(randomGetal)
         Return afb
     End Function
 
     Private Sub PictureBoxOnMouseClick(ByVal sender As PictureBox, ByVal e As System.EventArgs)
-        Dim afbTeZien As New List(Of Image)
+        If AfbTeZien.Count = 1 Then
+            sender.Image = Kaarten(sender.Name).Value
+            AfbTeZien.Add(sender.Image)
+            If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1)) Then
+                ' De afbeeldingen zijn gelijk
+                Me.Controls(sender.Name).BackColor = Color.Red
 
-        If afbTeZien.Count >= 1 Then
-            If AfbeeldingenVergelijken(afbTeZien(0), afbTeZien(1)) Then
-                MessageBox.Show("Afbeeldingen zijn gelijk?")
+
+
             Else
-                MessageBox.Show("Afbeeldingen niet gelijk?")
+                ' De afbeeldingen zijn niet gelijk
+
+
             End If
+            AfbTeZien.Clear()
         Else
             sender.Image = Kaarten(sender.Name).Value
-            afbTeZien.Add(sender.Image)
+            AfbTeZien.Add(sender.Image)
         End If
     End Sub
 
     Function AfbeeldingenVergelijken(ByVal image1 As Image, ByVal image2 As Image) As Boolean
-        ' Hier de afbeeldingen met elkaar vergelijken
-        If image1.Equals(image2) Then
+        If image1.Tag = image2.Tag Then
+            lblTweeAfbeeldingen.Text = "De afbeeldingen zijn gelijk"
             Return True
         Else
+            lblTweeAfbeeldingen.Text = "De afbeeldingen zijn niet gelijk"
             Return False
         End If
     End Function
@@ -98,12 +110,9 @@
                 picBox.Image = AfbeeldingInstellen()
                 Kaarten.Add(New KeyValuePair(Of Integer, Image)(aantal, picBox.Image))
                 picBox.Image = My.Resources.achterkant
+                picBox.Visible = True
                 aantal += 1
             End If
         Next
-        
-
-
-       
     End Sub
 End Class
