@@ -4,11 +4,14 @@
     Dim AfbTeZien As New List(Of Image)
     Dim GekliktePicBox As New List(Of PictureBox)
 
+    Private Property length As Integer
+
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         MaakVeld()
     End Sub
 
     Sub MaakVeld()
+        
         Dim nr As Byte = 0
         For i = 0 To 3
             For j = 0 To 3
@@ -100,7 +103,14 @@
     End Function
 
     Private Sub btnPlay_Click(sender As Button, e As System.EventArgs) Handles btnPlay.Click
+        Me.AutoSize = False
+        Me.Location = New Point(10, 20)
+        Me.length = 1000
+        Me.Width = 700
+        btnPlay.Location = New Point(20, 650)
+
         VoegAfbeeldingenToe()
+
         Dim aantal As Byte = 0
         For Each cntrl As Control In Me.Controls
             If (TypeOf cntrl Is PictureBox) Then
