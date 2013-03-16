@@ -9,7 +9,7 @@
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         MaakVeld()
-
+       
     End Sub
 
     Sub MaakVeld()
@@ -31,6 +31,10 @@
                 nr += 1
             Next
         Next
+
+        lblTweeAfbeeldingen.Location = New Point(200, 660)
+        lblTweeAfbeeldingen.AutoSize = False
+        lblTweeAfbeeldingen.Width = 200
     End Sub
 
     Sub VoegAfbeeldingenToe()
