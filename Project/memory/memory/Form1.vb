@@ -1,4 +1,5 @@
 ﻿Public Class frmMain
+    Dim juiste As Integer
     Dim Afbeeldingen As New List(Of Image)
     Dim Kaarten As New List(Of KeyValuePair(Of Integer, Image))
     Dim AfbTeZien As New List(Of Image)
@@ -8,10 +9,11 @@
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         MaakVeld()
+
     End Sub
 
     Sub MaakVeld()
-        
+
         Dim nr As Byte = 0
         For i = 0 To 3
             For j = 0 To 3
@@ -90,6 +92,9 @@
             GekliktePicBox.Add(sender)
             AfbTeZien.Add(sender.Image)
         End If
+
+        
+        
     End Sub
 
     Function AfbeeldingenVergelijken(ByVal image1 As Image, ByVal image2 As Image) As Boolean
@@ -101,11 +106,9 @@
             Return False
         End If
     End Function
-
-    Private Sub btnPlay_Click(sender As Button, e As System.EventArgs) Handles btnPlay.Click
+    Sub play()
         Me.AutoSize = False
-        Me.Location = New Point(10, 20)
-        Me.length = 1000
+        Me.Height = 800
         Me.Width = 700
         btnPlay.Location = New Point(20, 650)
 
@@ -125,9 +128,13 @@
             End If
         Next
     End Sub
+    Private Sub btnPlay_Click(sender As Button, e As System.EventArgs) Handles btnPlay.Click
+        play()
+    End Sub
 
     Private Sub TijdAfbTonen_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAfbTonenNietGelijk.Tick
         TijdAfbTonenNietGelijk.Stop()
+
         GekliktePicBox(0).Image = My.Resources.achterkant
         GekliktePicBox(1).Image = My.Resources.achterkant
         GekliktePicBox.Clear()
@@ -137,8 +144,23 @@
         TijdAfbTonenGelijk.Stop()
         GekliktePicBox(0).BackColor = Color.Aquamarine
         GekliktePicBox(1).BackColor = Color.Aquamarine
+        juiste = juiste + 1
+        If juiste = 8 Then
+            MessageBox.Show("U bent gewonnen.", "Proficiat!", MessageBoxButtons.OK)
 
+
+            If MessageBox.Show("Wilt u opnieuw spelen?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                play()
+            Else
+                Me.Close()
+            End If
+        End If
         GekliktePicBox.Clear()
 
     End Sub
+
+    Private Function adress() As Object
+        Throw New NotImplementedException
+    End Function
+
 End Class
