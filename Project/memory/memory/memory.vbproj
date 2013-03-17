@@ -72,11 +72,17 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="frmSpel.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="frmSpel.Designer.vb">
+      <DependentUpon>frmSpel.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.vb">
+      <DependentUpon>frmMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -96,8 +102,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpel.resx">
+      <DependentUpon>frmSpel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -142,7 +151,400 @@
     <None Include="Resources\Afb8.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Afb09.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb10.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb11.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb12.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb13.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb14.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb15.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb17.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb18.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb19.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb20.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb21.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb22.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb23.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb24.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb25.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb26.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb27.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb28.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb30.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb31.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb33.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb34.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb35.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb36.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb37.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb38.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb39.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb40.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb41.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb42.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb43.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb44.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb45.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb46.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\achterkant.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb03.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb04.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb05.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb06.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb07.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb08.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb09.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb12.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb13.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb14.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb15.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb16.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb17.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb18.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb19.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb20.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb22.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb23.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb25.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb26.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb27.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb28.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb30.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb31.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb32.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb33.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb34.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb35.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb36.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb37.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb38.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb39.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb40.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb41.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb42.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb43.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb44.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb45.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb46.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\achterkant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb07.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb08.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb09.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb33.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb36.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb37.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb38.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb39.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb43.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb45.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afb46.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
