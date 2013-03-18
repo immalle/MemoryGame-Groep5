@@ -35,6 +35,7 @@
         VoegAfbeeldingenToe(8)
         ' Start het spel
         Play()
+
     End Sub
 
     Sub GraadNormaal()
@@ -177,11 +178,12 @@
             MessageBox.Show("U bent gewonnen.", "Proficiat!", MessageBoxButtons.OK)
 
 
-            If MessageBox.Show("Wilt u opnieuw spelen?", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-                Play()
+            If MessageBox.Show("Wilt u terug naar het hoofdmenu", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                frmMenu.Show()
+                Me.Close()
             Else
                 Me.Close()
-                frmMenu.Show()
+                frmMenu.Close()
             End If
         End If
         GekliktePicBox.Clear()
