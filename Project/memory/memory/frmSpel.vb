@@ -5,6 +5,7 @@
     Dim Kaarten As New List(Of KeyValuePair(Of Integer, Image))
     Dim AfbTeZien As New List(Of Image)
     Dim GekliktePicBox As New List(Of PictureBox)
+    Dim AlleAfbeeldingen As New List(Of Image)
 
     Enum Graad
         Gemakkelijk
@@ -80,23 +81,29 @@
 
     Sub VoegAfbeeldingenToe(aantalAfbeeldingen As Byte)
         Dim randomClass As New Random()
+        Dim randomAfbNr As Integer
 
-
-        For i = 1 To aantalAfbeeldingen
-            Dim randomAfb As Integer = randomClass.Next(1, 46) ' Het aantal afbeeldingen dat in de map staan
+        ' Alle afbeeldingen toevoegen aan een lijst
+        For i = 1 To 46
             Dim afb As Image
-            If randomAfb > 9 Then
-                afb = Image.FromFile(frmMenu.PATH & "\Afb" & randomAfb & ".png")
-                Afbeeldingen.Add(afb)
-                Afbeeldingen.Add(afb)
+            If i > 9 Then
+                afb = Image.FromFile(frmMenu.PATH & "\Afb" & i & ".png")
+                AlleAfbeeldingen.Add(afb)
             Else
-                afb = Image.FromFile(frmMenu.PATH & "\Afb0" & randomAfb & ".png")
-                Afbeeldingen.Add(afb)
-                Afbeeldingen.Add(afb)
+                afb = Image.FromFile(frmMenu.PATH & "\Afb0" & i & ".png")
+                AlleAfbeeldingen.Add(afb)
             End If
-
         Next
 
+        ' Random aantal afbeeldingen uit alle afbeeldingen halen
+        For i = 0 To aantalAfbeeldingen - 1
+            randomAfbNr = randomClass.Next(0, AlleAfbeeldingen.Count)
+            Afbeeldingen.Add(AlleAfbeeldingen(randomAfbNr))
+            Afbeeldingen.Add(AlleAfbeeldingen(randomAfbNr))
+            AlleAfbeeldingen.RemoveAt(randomAfbNr)
+        Next
+
+        ' De gekozen afbeeldingen een bepaalde tag meegeven
         For i = 0 To Afbeeldingen.Count - 1 Step 2
             Afbeeldingen(i).Tag = "Afb" & i
             Afbeeldingen(i + 1).Tag = "Afb" & i

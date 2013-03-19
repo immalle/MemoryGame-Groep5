@@ -47,6 +47,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        txtPad.Text = "D:\Program Files Alg\GitHub\MemoryGame-Groep5\Project\memory\Afb"
+        'txtPad.Text = "D:\Program Files Alg\GitHub\MemoryGame-Groep5\Project\memory\Afb"   THUIS
+        txtPad.Text = "D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\Afb"
     End Sub
 End Class
