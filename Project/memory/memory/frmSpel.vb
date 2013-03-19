@@ -7,6 +7,7 @@
     Dim AfbTeZien As New List(Of Image)
     Dim GekliktePicBox As New List(Of PictureBox)
     Dim AlleAfbeeldingen As New List(Of Image)
+    Dim Paren As New List(Of Image) ' Alle paren opslagen en later tonen bij juiste paar zie sub Overzicht
 
     Enum Graad  ' Enum voor de moeilijdsgraden
         Gemakkelijk
@@ -33,6 +34,7 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
+        Overzicht(AantalNodigeJuiste)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 4x4
@@ -48,6 +50,7 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
+        Overzicht(AantalNodigeJuiste)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 5x6
@@ -63,6 +66,7 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
+        Overzicht(AantalNodigeJuiste)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 8x8
@@ -120,11 +124,29 @@
                 Kaarten.Add(New KeyValuePair(Of Integer, Image)(picBox.Name, AfbeeldingInstellen(randomGetal)))
                 picBox.Image = My.Resources.achterkant
                 picBox.Visible = True
-
                 picBox.BorderStyle = BorderStyle.Fixed3D
+                ' Handler meegeven
                 AddHandler picBox.MouseClick, AddressOf PictureBoxOnMouseClick
                 Me.Controls.Add(picBox)
                 nr += 1
+            Next
+        Next
+    End Sub
+
+    Sub Overzicht(ByVal aantalParen As Integer)
+        For i = 0 To aantalParen - 1
+            For j = 0 To 1
+                Dim picBox As New PictureBox()
+                picBox.Size = New Size(50, 50)
+                picBox.AutoSize = False
+                picBox.SizeMode = PictureBoxSizeMode.StretchImage
+
+                picBox.Location = New Point(((Me.Width - (picBox.Size.Width * 2) - 55) * j), 55 * i)
+
+                picBox.Image = My.Resources.achterkant
+                picBox.Visible = True
+                picBox.BorderStyle = BorderStyle.Fixed3D
+                Me.Controls.Add(picBox)
             Next
         Next
     End Sub
