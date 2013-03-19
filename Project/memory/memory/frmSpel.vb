@@ -99,9 +99,13 @@
         lblTweeAfbeeldingen.Width = 200
     End Sub
 
+    Function RandomSeed() As Integer
+        Dim rnd As New Random
+        Return rnd.Next
+    End Function
+
     Sub VoegAfbeeldingenToe(aantalAfbeeldingen As Byte)
-        Dim randomClass As New Random()
-        Dim randomAfbNr As Integer
+
 
         ' Alle afbeeldingen toevoegen aan een lijst
         For i = 1 To 46
@@ -114,9 +118,12 @@
                 AlleAfbeeldingen.Add(afb)
             End If
         Next
+        Dim randomClass As New Random()
 
         ' Random aantal afbeeldingen uit alle afbeeldingen halen
         For i = 0 To aantalAfbeeldingen - 1
+
+            Dim randomAfbNr As Integer
             randomAfbNr = randomClass.Next(0, AlleAfbeeldingen.Count)
             Afbeeldingen.Add(AlleAfbeeldingen(randomAfbNr))
             Afbeeldingen.Add(AlleAfbeeldingen(randomAfbNr))
@@ -130,9 +137,8 @@
         Next
     End Sub
 
-    Function AfbeeldingInstellen() As Image
-        Dim random As New Random()
-        Dim randomGetal As Integer = random.Next(Afbeeldingen.Count - 1)
+    Function AfbeeldingInstellen(ByVal randomGetal As Integer) As Image
+
         Dim afb As Image
         afb = Afbeeldingen(randomGetal)
 
@@ -174,13 +180,16 @@
     End Function
 
     Sub Play()
+        Dim random As New Random()
         Dim aantal As Byte = 0
         For Each cntrl As Control In Me.Controls
             If (TypeOf cntrl Is PictureBox) Then
+
+                Dim randomGetal As Integer = Random.Next(Afbeeldingen.Count - 1)
                 Dim picBox As PictureBox
                 picBox = cntrl
                 picBox.BackColor = Color.LightGray
-                picBox.Image = AfbeeldingInstellen()
+                picBox.Image = AfbeeldingInstellen(randomGetal)
                 Kaarten.Add(New KeyValuePair(Of Integer, Image)(aantal, picBox.Image))
                 picBox.Image = My.Resources.achterkant
                 picBox.Visible = True
