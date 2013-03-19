@@ -40,10 +40,30 @@
     End Sub
 
     Sub GraadNormaal()
-
+        ' De nodige juiste afbeeldingen instellne
+        AantalNodigeJuiste = 12
+        ' Stel formulier in op juiste verhoudingen
+        StelFormulierIn(755, 1000, 20, 650)
+        ' Veld van 12x12
+        MaakVeld(12)
+        ' Voeg de afbeeldingen toe
+        VoegAfbeeldingenToe(12)
+        ' Start het spel
+        Play()
+        
     End Sub
 
     Sub GraadMoeilijk()
+        ' De nodige juiste afbeeldingen instellne
+        AantalNodigeJuiste = 16
+        ' Stel formulier in op juiste verhoudingen
+        StelFormulierIn(755, 1200, 20, 650)
+        ' Veld van 16x16
+        MaakVeld(16)
+        ' Voeg de afbeeldingen toe
+        VoegAfbeeldingenToe(16)
+        ' Start het spel
+        Play()
 
     End Sub
 
