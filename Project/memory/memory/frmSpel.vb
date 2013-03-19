@@ -50,7 +50,7 @@
         VoegAfbeeldingenToe(12)
         ' Start het spel
         Play()
-        
+
     End Sub
 
     Sub GraadMoeilijk()
