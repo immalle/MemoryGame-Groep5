@@ -14,7 +14,7 @@
     End Enum
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-
+        ' Afhankelijk van de moeilijkheidsgraad, de code anders uitvoeren
         Select Case frmMenu.MOEILIJKHEIDSGRAAD
             Case Graad.Gemakkelijk
                 GraadMakkelijk()
@@ -26,42 +26,43 @@
     End Sub
 
     Sub GraadMakkelijk()
-        ' De nodige juiste afbeeldingen instellne
+        ' De nodige juiste afbeeldingen instellen
         AantalNodigeJuiste = 8
+        Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn(755, 660, 20, 650)
-        ' Veld van 8x8
-        MaakVeld(8)
+        ' Veld van 4x4
+        MaakVeld(4, 4)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(8)
         ' Start het spel
         Play()
-
     End Sub
 
     Sub GraadNormaal()
-        ' De nodige juiste afbeeldingen instellne
+        ' De nodige juiste afbeeldingen instellen
         AantalNodigeJuiste = 12
+        Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn(755, 1000, 20, 650)
-        ' Veld van 12x12
-        MaakVeld(12)
+        ' Veld van 6x6
+        MaakVeld(6, 6)
         ' Voeg de afbeeldingen toe
-        VoegAfbeeldingenToe(12)
+        VoegAfbeeldingenToe(18)
         ' Start het spel
         Play()
-
     End Sub
 
     Sub GraadMoeilijk()
-        ' De nodige juiste afbeeldingen instellne
+        ' De nodige juiste afbeeldingen instellen
         AantalNodigeJuiste = 16
+        Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn(755, 1200, 20, 650)
-        ' Veld van 16x16
-        MaakVeld(16)
+        ' Veld van 8x8
+        MaakVeld(8, 8)
         ' Voeg de afbeeldingen toe
-        VoegAfbeeldingenToe(16)
+        VoegAfbeeldingenToe(32)
         ' Start het spel
         Play()
 
@@ -69,16 +70,27 @@
 
     Sub StelFormulierIn(Formheight As Integer, Formwidth As Integer, knopMenuX As Integer, knopMenuY As Integer)
         Me.AutoSize = False
-        Me.Height = Formheight
-        Me.Width = Formwidth
+        Me.WindowState = FormWindowState.Maximized
         btnMenu.Location = New Point(knopMenuX, knopMenuY)
+        lblTweeAfbeeldingen.Location = New Point(150, 650)
+        lblTweeAfbeeldingen.AutoSize = False
+        lblTweeAfbeeldingen.Width = 200
+
+        lblAantalParen.Location = New Point(400, 650)
+        lblAantalParen.AutoSize = False
+        lblAantalParen.Width = 200
+        lblAantalParen.Text = Juiste
+
+        lblNodigeParen.Location = New Point(450, 650)
+        lblNodigeParen.AutoSize = False
+        lblNodigeParen.Width = 200
+        lblNodigeParen.Text = AantalNodigeJuiste
     End Sub
 
-    Public Sub MaakVeld(ByVal aantalRij As Integer)
-        Dim veld As Integer = aantalRij / 2
+    Public Sub MaakVeld(ByVal aantalRij As Integer, ByVal aantalKolom As Integer)
         Dim nr As Byte = 0
-        For i = 0 To veld - 1
-            For j = 0 To veld - 1
+        For i = 0 To aantalRij - 1
+            For j = 1 To aantalKolom
                 Dim picBox As New PictureBox
                 picBox.Size = New Size(100, 100)
                 picBox.Name = nr
@@ -93,20 +105,9 @@
                 nr += 1
             Next
         Next
-
-        lblTweeAfbeeldingen.Location = New Point(200, 660)
-        lblTweeAfbeeldingen.AutoSize = False
-        lblTweeAfbeeldingen.Width = 200
     End Sub
 
-    Function RandomSeed() As Integer
-        Dim rnd As New Random
-        Return rnd.Next
-    End Function
-
     Sub VoegAfbeeldingenToe(aantalAfbeeldingen As Byte)
-
-
         ' Alle afbeeldingen toevoegen aan een lijst
         For i = 1 To 46
             Dim afb As Image
@@ -120,9 +121,8 @@
         Next
         Dim randomClass As New Random()
 
-        ' Random aantal afbeeldingen uit alle afbeeldingen halen
+        ' Random afbeeldingen uit alle afbeeldingen halen
         For i = 0 To aantalAfbeeldingen - 1
-
             Dim randomAfbNr As Integer
             randomAfbNr = randomClass.Next(0, AlleAfbeeldingen.Count)
             Afbeeldingen.Add(AlleAfbeeldingen(randomAfbNr))
@@ -138,10 +138,8 @@
     End Sub
 
     Function AfbeeldingInstellen(ByVal randomGetal As Integer) As Image
-
         Dim afb As Image
         afb = Afbeeldingen(randomGetal)
-
         Afbeeldingen.RemoveAt(randomGetal)
         Return afb
     End Function
@@ -164,9 +162,6 @@
             GekliktePicBox.Add(sender)
             AfbTeZien.Add(sender.Image)
         End If
-
-
-
     End Sub
 
     Function AfbeeldingenVergelijken(ByVal image1 As Image, ByVal image2 As Image) As Boolean
@@ -184,8 +179,7 @@
         Dim aantal As Byte = 0
         For Each cntrl As Control In Me.Controls
             If (TypeOf cntrl Is PictureBox) Then
-
-                Dim randomGetal As Integer = Random.Next(Afbeeldingen.Count - 1)
+                Dim randomGetal As Integer = random.Next(Afbeeldingen.Count)
                 Dim picBox As PictureBox
                 picBox = cntrl
                 picBox.BackColor = Color.LightGray
@@ -210,10 +204,9 @@
         GekliktePicBox(0).BackColor = Color.Aquamarine
         GekliktePicBox(1).BackColor = Color.Aquamarine
         Juiste += 1
+        lblAantalParen.Text = Juiste
         If Juiste = AantalNodigeJuiste Then
             MessageBox.Show("U heeft gewonnen.", "Proficiat!", MessageBoxButtons.OK)
-
-
             If MessageBox.Show("Wilt u terug naar het hoofdmenu", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                 frmMenu.Show()
                 Me.Close()
@@ -223,7 +216,6 @@
             End If
         End If
         GekliktePicBox.Clear()
-
     End Sub
 
     Private Sub btnMenu_Click(sender As System.Object, e As System.EventArgs) Handles btnMenu.Click
