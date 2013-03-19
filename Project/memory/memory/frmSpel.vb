@@ -46,26 +46,34 @@
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn(755, 1000, 20, 650)
         ' Veld van 6x6
-        MaakVeld(6, 6)
+        MaakVeld(4, 6)
         ' Voeg de afbeeldingen toe
-        VoegAfbeeldingenToe(18)
+        VoegAfbeeldingenToe(12)
         ' Start het spel
         Play()
     End Sub
 
     Sub GraadMoeilijk()
         ' De nodige juiste afbeeldingen instellen
-        AantalNodigeJuiste = 16
+        AantalNodigeJuiste = 15
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
-        StelFormulierIn(755, 1200, 20, 650)
+        StelFormulierIn(1200, 1200, 20, 650)
         ' Veld van 8x8
-        MaakVeld(8, 8)
+        MaakVeld(5, 6)
         ' Voeg de afbeeldingen toe
-        VoegAfbeeldingenToe(32)
+        VoegAfbeeldingenToe(15)
         ' Start het spel
         Play()
+        lblAantalParen.Location = New Point(400, 850)
+        lblAantalParen.AutoSize = False
+        lblAantalParen.Width = 200
+        lblAantalParen.Text = Juiste
 
+        lblNodigeParen.Location = New Point(450, 850)
+        lblNodigeParen.AutoSize = False
+        lblNodigeParen.Width = 200
+        lblNodigeParen.Text = AantalNodigeJuiste
     End Sub
 
     Sub StelFormulierIn(Formheight As Integer, Formwidth As Integer, knopMenuX As Integer, knopMenuY As Integer)
@@ -76,10 +84,12 @@
         lblTweeAfbeeldingen.AutoSize = False
         lblTweeAfbeeldingen.Width = 200
 
+
         lblAantalParen.Location = New Point(400, 650)
         lblAantalParen.AutoSize = False
         lblAantalParen.Width = 200
         lblAantalParen.Text = Juiste
+
 
         lblNodigeParen.Location = New Point(450, 650)
         lblNodigeParen.AutoSize = False
@@ -222,4 +232,6 @@
         Me.Close()
         frmMenu.Show()
     End Sub
+
+    
 End Class
