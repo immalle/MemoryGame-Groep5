@@ -182,7 +182,7 @@
         GekliktePicBox(1).BackColor = Color.Aquamarine
         Juiste += 1
         If Juiste = AantalNodigeJuiste Then
-            MessageBox.Show("U bent gewonnen.", "Proficiat!", MessageBoxButtons.OK)
+            MessageBox.Show("U heeft gewonnen.", "Proficiat!", MessageBoxButtons.OK)
 
 
             If MessageBox.Show("Wilt u terug naar het hoofdmenu", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
