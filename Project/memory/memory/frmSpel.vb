@@ -1,5 +1,6 @@
 ﻿Public Class frmSpel
     Dim Juiste As Integer
+    Dim TijdBezigSec As Integer
     Dim AantalNodigeJuiste As Integer
     Dim Afbeeldingen As New List(Of Image)
     Dim Kaarten As New List(Of KeyValuePair(Of Integer, Image))
@@ -23,6 +24,7 @@
             Case Graad.Moeilijk
                 GraadMoeilijk()
         End Select
+        TijdBezig.Start()
     End Sub
 
     Sub GraadMakkelijk()
@@ -31,12 +33,13 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
-        ' Veld van 4x4
-        MaakVeld(4, 4)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
+        ' Veld van 4x4
+        MaakVeld(4, 4)
+
         ' Start het spel
-        Play()
+        'Play()
     End Sub
 
     Sub GraadNormaal()
@@ -45,12 +48,13 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
-        ' Veld van 5x6
-        MaakVeld(5, 6)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
+        ' Veld van 5x6
+        MaakVeld(5, 6)
+
         ' Start het spel
-        Play()
+        'Play()
     End Sub
 
     Sub GraadMoeilijk()
@@ -59,12 +63,12 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
-        ' Veld van 8x8
-        MaakVeld(6, 8)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
+        ' Veld van 8x8
+        MaakVeld(6, 8)
         ' Start het spel
-        Play()
+        'Play()
         
     End Sub
 
@@ -81,31 +85,41 @@
         lblTweeAfbeeldingen.AutoSize = False
         lblTweeAfbeeldingen.Width = btnMenu.Width
 
-
         lblAantalParen.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 2) + (tussenPlaats * 3))
         lblAantalParen.AutoSize = False
         lblAantalParen.Width = btnMenu.Width / 2
         lblAantalParen.Text = Juiste
 
-
         lblNodigeParen.Location = New Point(btnMenu.Location.X + tussenPlaats, (btnMenu.Width * 2) + (tussenPlaats * 3))
         lblNodigeParen.AutoSize = False
         lblNodigeParen.Width = btnMenu.Width / 2
         lblNodigeParen.Text = "/ " & AantalNodigeJuiste
+
+        lblTijdbezig.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 3) + (tussenPlaats * 4))
+        lblTijdbezig.AutoSize = False
+        lblTijdbezig.Width = btnMenu.Width
+        lblTijdbezig.Text = "0"
     End Sub
 
     Public Sub MaakVeld(ByVal aantalRij As Integer, ByVal aantalKolom As Integer)
         ' De PictureBoxen maken en toevoegen aan de controls van het formulier
+        Dim random As New Random()
         Dim nr As Byte = 0
         For i = 0 To aantalRij - 1
             For j = 1 To aantalKolom
+                Dim randomGetal As Integer = random.Next(Afbeeldingen.Count)
+                ' Basis instellingen voor elke picbox
                 Dim picBox As New PictureBox
                 picBox.Size = New Size(100, 100)
                 picBox.Name = nr
                 picBox.AutoSize = False
                 picBox.Location = New Point(170 * j, 170 * i)
                 picBox.SizeMode = PictureBoxSizeMode.AutoSize
-                picBox.Visible = False
+                ' De afbeelding meegeven + opslaan en daarna de achterkant tonen v/d kaart
+                picBox.BackColor = Color.LightGray
+                Kaarten.Add(New KeyValuePair(Of Integer, Image)(picBox.Name, AfbeeldingInstellen(randomGetal)))
+                picBox.Image = My.Resources.achterkant
+                picBox.Visible = True
 
                 picBox.BorderStyle = BorderStyle.Fixed3D
                 AddHandler picBox.MouseClick, AddressOf PictureBoxOnMouseClick
@@ -185,26 +199,6 @@
         End If
     End Function
 
-    Sub Play()
-        Dim random As New Random()
-        Dim aantal As Byte = 0
-
-        ' In alle controls op zoek gaan naar de pictureboxen en daar een afbeelding aan toewijzen (Dit kan misschien wel bij veld maken?)
-        For Each cntrl As Control In Me.Controls
-            If (TypeOf cntrl Is PictureBox) Then
-                Dim randomGetal As Integer = random.Next(Afbeeldingen.Count)
-                Dim picBox As PictureBox
-                picBox = cntrl
-                picBox.BackColor = Color.LightGray
-                picBox.Image = AfbeeldingInstellen(randomGetal)
-                Kaarten.Add(New KeyValuePair(Of Integer, Image)(aantal, picBox.Image))
-                picBox.Image = My.Resources.achterkant
-                picBox.Visible = True
-                aantal += 1
-            End If
-        Next
-    End Sub
-
     Private Sub TijdAfbTonenNietGelijk_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAfbTonenNietGelijk.Tick
         ' De afbeeldingen voor x seconden tonen en dan weer de achterkant laten zien   Als de afbeeldingen niet gelijk zijn
         TijdAfbTonenNietGelijk.Stop()
@@ -241,5 +235,8 @@
         frmMenu.Show()
     End Sub
 
-    
+    Private Sub TijdBezig_Tick(sender As System.Object, e As System.EventArgs) Handles TijdBezig.Tick
+        TijdBezigSec += 1
+        lblTijdbezig.Text = TijdBezigSec
+    End Sub
 End Class
