@@ -7,7 +7,7 @@
     Dim GekliktePicBox As New List(Of PictureBox)
     Dim AlleAfbeeldingen As New List(Of Image)
 
-    Enum Graad
+    Enum Graad  ' Enum voor de moeilijdsgraden
         Gemakkelijk
         Normaal
         Moeilijk
@@ -30,74 +30,72 @@
         AantalNodigeJuiste = 8
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
-        StelFormulierIn(755, 660, 20, 650)
+        StelFormulierIn()
         ' Veld van 4x4
         MaakVeld(4, 4)
         ' Voeg de afbeeldingen toe
-        VoegAfbeeldingenToe(8)
+        VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Start het spel
         Play()
     End Sub
 
     Sub GraadNormaal()
         ' De nodige juiste afbeeldingen instellen
-        AantalNodigeJuiste = 12
+        AantalNodigeJuiste = 15
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
-        StelFormulierIn(755, 1000, 20, 650)
-        ' Veld van 6x6
-        MaakVeld(4, 6)
+        StelFormulierIn()
+        ' Veld van 5x6
+        MaakVeld(5, 6)
         ' Voeg de afbeeldingen toe
-        VoegAfbeeldingenToe(12)
+        VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Start het spel
         Play()
     End Sub
 
     Sub GraadMoeilijk()
         ' De nodige juiste afbeeldingen instellen
-        AantalNodigeJuiste = 15
+        AantalNodigeJuiste = 24
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
-        StelFormulierIn(1200, 1200, 20, 650)
+        StelFormulierIn()
         ' Veld van 8x8
-        MaakVeld(5, 6)
+        MaakVeld(6, 8)
         ' Voeg de afbeeldingen toe
-        VoegAfbeeldingenToe(15)
+        VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Start het spel
         Play()
-        lblAantalParen.Location = New Point(400, 850)
-        lblAantalParen.AutoSize = False
-        lblAantalParen.Width = 200
-        lblAantalParen.Text = Juiste
-
-        lblNodigeParen.Location = New Point(450, 850)
-        lblNodigeParen.AutoSize = False
-        lblNodigeParen.Width = 200
-        lblNodigeParen.Text = AantalNodigeJuiste
+        
     End Sub
 
-    Sub StelFormulierIn(Formheight As Integer, Formwidth As Integer, knopMenuX As Integer, knopMenuY As Integer)
+    Sub StelFormulierIn()
+        ' Locatie van alle labels + btns op het formulier
+        Const tussenPlaats As Byte = 35
+
         Me.AutoSize = False
         Me.WindowState = FormWindowState.Maximized
-        btnMenu.Location = New Point(knopMenuX, knopMenuY)
-        lblTweeAfbeeldingen.Location = New Point(150, 650)
+
+        btnMenu.Location = New Point(tussenPlaats, tussenPlaats)
+
+        lblTweeAfbeeldingen.Location = New Point(btnMenu.Location.X, btnMenu.Width + (tussenPlaats * 2))
         lblTweeAfbeeldingen.AutoSize = False
-        lblTweeAfbeeldingen.Width = 200
+        lblTweeAfbeeldingen.Width = btnMenu.Width
 
 
-        lblAantalParen.Location = New Point(400, 650)
+        lblAantalParen.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 2) + (tussenPlaats * 3))
         lblAantalParen.AutoSize = False
-        lblAantalParen.Width = 200
+        lblAantalParen.Width = btnMenu.Width / 2
         lblAantalParen.Text = Juiste
 
 
-        lblNodigeParen.Location = New Point(450, 650)
+        lblNodigeParen.Location = New Point(btnMenu.Location.X + tussenPlaats, (btnMenu.Width * 2) + (tussenPlaats * 3))
         lblNodigeParen.AutoSize = False
-        lblNodigeParen.Width = 200
-        lblNodigeParen.Text = AantalNodigeJuiste
+        lblNodigeParen.Width = btnMenu.Width / 2
+        lblNodigeParen.Text = "/ " & AantalNodigeJuiste
     End Sub
 
     Public Sub MaakVeld(ByVal aantalRij As Integer, ByVal aantalKolom As Integer)
+        ' De PictureBoxen maken en toevoegen aan de controls van het formulier
         Dim nr As Byte = 0
         For i = 0 To aantalRij - 1
             For j = 1 To aantalKolom
@@ -148,6 +146,7 @@
     End Sub
 
     Function AfbeeldingInstellen(ByVal randomGetal As Integer) As Image
+        ' Een willekeurige afbeelding uit de lijst afbeeldingen toewijzen aan een picturebox
         Dim afb As Image
         afb = Afbeeldingen(randomGetal)
         Afbeeldingen.RemoveAt(randomGetal)
@@ -155,6 +154,7 @@
     End Function
 
     Private Sub PictureBoxOnMouseClick(ByVal sender As PictureBox, ByVal e As System.EventArgs)
+        ' Als op een picturebox geklikt word, 
         If AfbTeZien.Count = 1 Then
             sender.Image = Kaarten(sender.Name).Value
             GekliktePicBox.Add(sender)
@@ -175,11 +175,12 @@
     End Sub
 
     Function AfbeeldingenVergelijken(ByVal image1 As Image, ByVal image2 As Image) As Boolean
+        ' Controleren of de 2 aangeklikte afbeeldingen hetzelfde zijn
         If image1.Tag = image2.Tag Then
-            lblTweeAfbeeldingen.Text = "De afbeeldingen zijn gelijk"
+            lblTweeAfbeeldingen.Text = "Een paar"
             Return True
         Else
-            lblTweeAfbeeldingen.Text = "De afbeeldingen zijn niet gelijk"
+            lblTweeAfbeeldingen.Text = "Geen paar"
             Return False
         End If
     End Function
@@ -187,6 +188,8 @@
     Sub Play()
         Dim random As New Random()
         Dim aantal As Byte = 0
+
+        ' In alle controls op zoek gaan naar de pictureboxen en daar een afbeelding aan toewijzen (Dit kan misschien wel bij veld maken?)
         For Each cntrl As Control In Me.Controls
             If (TypeOf cntrl Is PictureBox) Then
                 Dim randomGetal As Integer = random.Next(Afbeeldingen.Count)
@@ -202,7 +205,8 @@
         Next
     End Sub
 
-    Private Sub TijdAfbTonen_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAfbTonenNietGelijk.Tick
+    Private Sub TijdAfbTonenNietGelijk_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAfbTonenNietGelijk.Tick
+        ' De afbeeldingen voor x seconden tonen en dan weer de achterkant laten zien   Als de afbeeldingen niet gelijk zijn
         TijdAfbTonenNietGelijk.Stop()
         GekliktePicBox(0).Image = My.Resources.achterkant
         GekliktePicBox(1).Image = My.Resources.achterkant
@@ -210,11 +214,14 @@
     End Sub
 
     Private Sub TijdAfbTonenGelijk_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAfbTonenGelijk.Tick
+        ' De afbeeldingen een achtergrondkleur geven ter bevestiging dat de 2 afbeeldingen gelijk zijn      Als de afbeeldingen gelijk zijn
         TijdAfbTonenGelijk.Stop()
         GekliktePicBox(0).BackColor = Color.Aquamarine
         GekliktePicBox(1).BackColor = Color.Aquamarine
         Juiste += 1
         lblAantalParen.Text = Juiste
+
+        ' Als alle paren gevonden zijn, vragen of ze naar het menu willen terugkeren of gewoon stoppen
         If Juiste = AantalNodigeJuiste Then
             MessageBox.Show("U heeft gewonnen.", "Proficiat!", MessageBoxButtons.OK)
             If MessageBox.Show("Wilt u terug naar het hoofdmenu", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
@@ -229,6 +236,7 @@
     End Sub
 
     Private Sub btnMenu_Click(sender As System.Object, e As System.EventArgs) Handles btnMenu.Click
+        ' Het spel stoppen en naar het menu gaan
         Me.Close()
         frmMenu.Show()
     End Sub
