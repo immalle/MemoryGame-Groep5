@@ -29,7 +29,7 @@
         ' De nodige juiste afbeeldingen instellne
         AantalNodigeJuiste = 8
         ' Stel formulier in op juiste verhoudingen
-        StelFormulierIn(755, 900, 20, 650)
+        StelFormulierIn(755, 660, 20, 650)
         ' Veld van 8x8
         MaakVeld(8)
         ' Voeg de afbeeldingen toe

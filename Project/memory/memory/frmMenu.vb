@@ -9,6 +9,7 @@
     Private Sub btnPlay_Click(sender As System.Object, e As System.EventArgs) Handles btnPlay.Click
         frmSpel.Show()
         Me.Hide()
+        frmSpel.Location = New Point(50, 50)
     End Sub
 
     Private Sub rbGemakkelijk_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbGemakkelijk.CheckedChanged
