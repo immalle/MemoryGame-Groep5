@@ -24,22 +24,7 @@
         End If
     End Sub
 
-    'Sub PlayMogelijk(ByVal graad As frmSpel.Graad)
-    '    Dim gekozenGraad As Boolean
-    '    Dim pad As Boolean
-    '    pad = txtPad.Text <> ""
-    '    MOEILIJKHEIDSGRAAD = graad
-    '    gekozenGraad = MOEILIJKHEIDSGRAAD = frmSpel.Graad.Gemakkelijk Or MOEILIJKHEIDSGRAAD = frmSpel.Graad.Normaal Or MOEILIJKHEIDSGRAAD = frmSpel.Graad.Moeilijk
-
-    '    If pad And gekozenGraad Then
-    '        btnPlay.Enabled = True
-    '    End If
-
-    'End Sub
-    'Private Sub txtPad_TextChanged(sender As TextBox, e As System.EventArgs) Handles txtPad.TextChanged
-    '    PATH = sender.Text
-    '    gbGraden.Enabled = True
-    'End Sub
+    
 
     Private Sub rbMoeilijk_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbMoeilijk.CheckedChanged
         If rbMoeilijk.Checked = True Then
@@ -47,8 +32,7 @@
         End If
     End Sub
 
-    'Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-    '    txtPad.Text = Application.StartupPath & "\afb"
-    '    'txtPad.Text = "D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\Afb"
-    'End Sub
+    
+
+    
 End Class
