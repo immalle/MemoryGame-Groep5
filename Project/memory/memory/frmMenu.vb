@@ -14,19 +14,19 @@
 
     Private Sub rbGemakkelijk_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbGemakkelijk.CheckedChanged
         If rbGemakkelijk.Checked = True Then
-            frmSpel.GraadMakkelijk()
+            MOEILIJKHEIDSGRAAD = frmSpel.Graad.Gemakkelijk
         End If
     End Sub
 
     Private Sub rbNormaal_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbNormaal.CheckedChanged
         If rbNormaal.Checked = True Then
-            frmSpel.GraadNormaal()
+            MOEILIJKHEIDSGRAAD = frmSpel.Graad.Normaal
         End If
     End Sub
 
     Private Sub rbMoeilijk_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbMoeilijk.CheckedChanged
         If rbMoeilijk.Checked = True Then
-            frmSpel.GraadMoeilijk()
+            MOEILIJKHEIDSGRAAD = frmSpel.Graad.Moeilijk
         End If
     End Sub
 
