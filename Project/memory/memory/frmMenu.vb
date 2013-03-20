@@ -1,5 +1,5 @@
 ﻿Public Class frmMenu
-    Public PATH As String = My.Application.Info.DirectoryPath & "\afb"
+    Public PATH As String
     Public MOEILIJKHEIDSGRAAD As frmSpel.Graad
 
     Private Sub btnQuit_Click(sender As System.Object, e As System.EventArgs) Handles btnQuit.Click
@@ -24,15 +24,13 @@
         End If
     End Sub
 
-    
-
     Private Sub rbMoeilijk_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbMoeilijk.CheckedChanged
         If rbMoeilijk.Checked = True Then
             frmSpel.GraadMoeilijk()
         End If
-
     End Sub
 
-  
-    
+    Private Sub frmMenu_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        PATH = Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\Afbeeldingen"
+    End Sub
 End Class
