@@ -1,5 +1,5 @@
 ﻿Public Class frmMenu
-    Public PATH As String = Application.CommonAppDataPath & "\afb"
+    Public PATH As String = "D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Afb"
     Public MOEILIJKHEIDSGRAAD As frmSpel.Graad
 
     Private Sub btnQuit_Click(sender As System.Object, e As System.EventArgs) Handles btnQuit.Click
@@ -33,10 +33,4 @@
 
     End Sub
 
-    
-
-    
-    Private Sub frmMenu_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        MessageBox.Show(PATH)
-    End Sub
 End Class

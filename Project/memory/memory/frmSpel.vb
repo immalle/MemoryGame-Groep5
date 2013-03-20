@@ -34,14 +34,12 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
-        Overzicht(AantalNodigeJuiste)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 4x4
         MaakVeld(4, 4)
 
         ' Start het spel
-        'Play()
     End Sub
 
     Sub GraadNormaal()
@@ -50,14 +48,13 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
-        Overzicht(AantalNodigeJuiste)
+
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 4x6
         MaakVeld(4, 6)
 
         ' Start het spel
-        'Play()
     End Sub
 
     Sub GraadMoeilijk()
@@ -66,13 +63,12 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
-        Overzicht(AantalNodigeJuiste)
+
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 5x6
         MaakVeld(5, 6)
         ' Start het spel
-        'Play()
         
     End Sub
 
@@ -129,24 +125,6 @@
                 AddHandler picBox.MouseClick, AddressOf PictureBoxOnMouseClick
                 Me.Controls.Add(picBox)
                 nr += 1
-            Next
-        Next
-    End Sub
-
-    Sub Overzicht(ByVal aantalParen As Integer)
-        For i = 0 To aantalParen - 1
-            For j = 0 To 1
-                Dim picBox As New PictureBox()
-                picBox.Size = New Size(50, 50)
-                picBox.AutoSize = False
-                picBox.SizeMode = PictureBoxSizeMode.StretchImage
-
-                picBox.Location = New Point(((Me.Width - (picBox.Size.Width * 2) - 55) * j), 55 * i)
-
-                picBox.Image = My.Resources.achterkant
-                picBox.Visible = True
-                picBox.BorderStyle = BorderStyle.Fixed3D
-                Me.Controls.Add(picBox)
             Next
         Next
     End Sub
