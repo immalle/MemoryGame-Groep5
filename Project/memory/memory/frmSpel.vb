@@ -71,7 +71,18 @@
         Const tussenPlaats As Byte = 35
 
         Me.AutoSize = False
-        Me.WindowState = FormWindowState.Maximized
+        Select Case frmMenu.MOEILIJKHEIDSGRAAD
+            Case Graad.Gemakkelijk
+                Me.Width = 1000
+                Me.Height = 750
+            Case Graad.Normaal
+                Me.Width = 1250
+                Me.Height = 750
+            Case Graad.Moeilijk
+                Me.Width = 1250
+                Me.Height = 900
+        End Select
+        Me.StartPosition = FormStartPosition.CenterScreen
 
         btnMenu.Location = New Point(tussenPlaats, tussenPlaats)
 
@@ -97,8 +108,6 @@
 
     Public Sub MaakVeld(ByVal aantalRij As Integer, ByVal aantalKolom As Integer)
         ' De PictureBoxen maken en toevoegen aan de controls van het formulier
-        Dim extraX As Integer = 0
-        Dim extraY As Integer = -170
         Dim random As New Random()
         Dim nr As Byte = 0
         For i = 0 To aantalRij - 1
@@ -106,25 +115,23 @@
                 Dim randomGetal As Integer = random.Next(Afbeeldingen.Count)
                 ' Basis instellingen voor elke picbox
                 Dim picBox As New PictureBox
-                picBox.Size = New Size(100, 100)
+                picBox.Size = New Size(128, 128)
                 picBox.Name = nr
                 picBox.AutoSize = False
-                picBox.Location = New Point(((Me.Width / 2) - 340) + extraX, ((Me.Height / 2) - 340) + extraY)
-                picBox.SizeMode = PictureBoxSizeMode.AutoSize
+                picBox.Location = New Point(170 * j, 170 * i)
+                picBox.SizeMode = PictureBoxSizeMode.StretchImage
                 ' De afbeelding meegeven + opslaan en daarna de achterkant tonen v/d kaart
-                picBox.BackColor = Color.LightGray
+                picBox.BackColor = Color.Transparent
                 Kaarten.Add(New KeyValuePair(Of Integer, Image)(picBox.Name, AfbeeldingInstellen(randomGetal)))
                 picBox.Image = My.Resources.achterkant
+                picBox.BorderStyle = BorderStyle.FixedSingle
                 picBox.Visible = True
-                picBox.BorderStyle = BorderStyle.Fixed3D
+
                 ' Handler meegeven
                 AddHandler picBox.MouseClick, AddressOf PictureBoxOnMouseClick
                 Me.Controls.Add(picBox)
                 nr += 1
-                extraX += 170
             Next
-            extraX = 0
-            extraY += 170
         Next
     End Sub
 
@@ -175,6 +182,7 @@
             If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1)) Then
                 ' De afbeeldingen zijn gelijk
                 TijdAfbTonenGelijk.Start()
+
             Else
                 ' De afbeeldingen zijn niet gelijk
                 TijdAfbTonenNietGelijk.Start()
