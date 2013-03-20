@@ -46,7 +46,7 @@
 
     Sub GraadNormaal()
         ' De nodige juiste afbeeldingen instellen
-        AantalNodigeJuiste = 15
+        AantalNodigeJuiste = 12
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
@@ -54,7 +54,7 @@
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 5x6
-        MaakVeld(5, 6)
+        MaakVeld(4, 6)
 
         ' Start het spel
         'Play()
@@ -62,7 +62,7 @@
 
     Sub GraadMoeilijk()
         ' De nodige juiste afbeeldingen instellen
-        AantalNodigeJuiste = 24
+        AantalNodigeJuiste = 15
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
@@ -70,7 +70,7 @@
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 8x8
-        MaakVeld(6, 8)
+        MaakVeld(5, 6)
         ' Start het spel
         'Play()
         
