@@ -38,8 +38,6 @@
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 4x4
         MaakVeld(4, 4)
-
-        ' Start het spel
     End Sub
 
     Sub GraadNormaal()
@@ -53,8 +51,6 @@
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 4x6
         MaakVeld(4, 6)
-
-        ' Start het spel
     End Sub
 
     Sub GraadMoeilijk()
@@ -68,8 +64,6 @@
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 5x6
         MaakVeld(5, 6)
-        ' Start het spel
-        
     End Sub
 
     Sub StelFormulierIn()
@@ -103,6 +97,8 @@
 
     Public Sub MaakVeld(ByVal aantalRij As Integer, ByVal aantalKolom As Integer)
         ' De PictureBoxen maken en toevoegen aan de controls van het formulier
+        Dim extraX As Integer = 0
+        Dim extraY As Integer = -170
         Dim random As New Random()
         Dim nr As Byte = 0
         For i = 0 To aantalRij - 1
@@ -113,7 +109,7 @@
                 picBox.Size = New Size(100, 100)
                 picBox.Name = nr
                 picBox.AutoSize = False
-                picBox.Location = New Point(170 * j, 170 * i)
+                picBox.Location = New Point(((Me.Width / 2) - 340) + extraX, ((Me.Height / 2) - 340) + extraY)
                 picBox.SizeMode = PictureBoxSizeMode.AutoSize
                 ' De afbeelding meegeven + opslaan en daarna de achterkant tonen v/d kaart
                 picBox.BackColor = Color.LightGray
@@ -125,7 +121,10 @@
                 AddHandler picBox.MouseClick, AddressOf PictureBoxOnMouseClick
                 Me.Controls.Add(picBox)
                 nr += 1
+                extraX += 170
             Next
+            extraX = 0
+            extraY += 170
         Next
     End Sub
 
