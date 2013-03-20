@@ -1,5 +1,5 @@
 ﻿Public Class frmMenu
-    Public PATH As String = Application.StartupPath & "\afb"
+    Public PATH As String = Application.CommonAppDataPath & "\afb"
     Public MOEILIJKHEIDSGRAAD As frmSpel.Graad
 
     Private Sub btnQuit_Click(sender As System.Object, e As System.EventArgs) Handles btnQuit.Click
@@ -30,9 +30,13 @@
         If rbMoeilijk.Checked = True Then
             frmSpel.GraadMoeilijk()
         End If
+
     End Sub
 
     
 
     
+    Private Sub frmMenu_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        MessageBox.Show(PATH)
+    End Sub
 End Class
