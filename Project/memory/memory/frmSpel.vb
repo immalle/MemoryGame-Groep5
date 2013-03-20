@@ -53,7 +53,7 @@
         Overzicht(AantalNodigeJuiste)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
-        ' Veld van 5x6
+        ' Veld van 4x6
         MaakVeld(4, 6)
 
         ' Start het spel
@@ -69,7 +69,7 @@
         Overzicht(AantalNodigeJuiste)
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
-        ' Veld van 8x8
+        ' Veld van 5x6
         MaakVeld(5, 6)
         ' Start het spel
         'Play()
