@@ -32,14 +32,16 @@ Partial Class frmSpel
         Me.lblNodigeParen = New System.Windows.Forms.Label()
         Me.lblTijdbezig = New System.Windows.Forms.Label()
         Me.TijdBezig = New System.Windows.Forms.Timer(Me.components)
+        Me.lblScore = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblTweeAfbeeldingen
         '
         Me.lblTweeAfbeeldingen.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTweeAfbeeldingen.Location = New System.Drawing.Point(119, 682)
+        Me.lblTweeAfbeeldingen.Location = New System.Drawing.Point(89, 554)
+        Me.lblTweeAfbeeldingen.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblTweeAfbeeldingen.Name = "lblTweeAfbeeldingen"
-        Me.lblTweeAfbeeldingen.Size = New System.Drawing.Size(159, 44)
+        Me.lblTweeAfbeeldingen.Size = New System.Drawing.Size(119, 36)
         Me.lblTweeAfbeeldingen.TabIndex = 1
         '
         'TijdAfbTonenNietGelijk
@@ -53,10 +55,10 @@ Partial Class frmSpel
         'btnMenu
         '
         Me.btnMenu.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMenu.Location = New System.Drawing.Point(12, 156)
-        Me.btnMenu.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnMenu.Location = New System.Drawing.Point(9, 127)
+        Me.btnMenu.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnMenu.Name = "btnMenu"
-        Me.btnMenu.Size = New System.Drawing.Size(101, 50)
+        Me.btnMenu.Size = New System.Drawing.Size(76, 41)
         Me.btnMenu.TabIndex = 2
         Me.btnMenu.Text = "Menu"
         Me.btnMenu.UseVisualStyleBackColor = True
@@ -65,9 +67,10 @@ Partial Class frmSpel
         '
         Me.lblAantalParen.AutoSize = True
         Me.lblAantalParen.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAantalParen.Location = New System.Drawing.Point(8, 232)
+        Me.lblAantalParen.Location = New System.Drawing.Point(6, 188)
+        Me.lblAantalParen.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblAantalParen.Name = "lblAantalParen"
-        Me.lblAantalParen.Size = New System.Drawing.Size(101, 20)
+        Me.lblAantalParen.Size = New System.Drawing.Size(88, 17)
         Me.lblAantalParen.TabIndex = 3
         Me.lblAantalParen.Text = "aantal paren"
         '
@@ -75,9 +78,10 @@ Partial Class frmSpel
         '
         Me.lblNodigeParen.AutoSize = True
         Me.lblNodigeParen.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNodigeParen.Location = New System.Drawing.Point(8, 252)
+        Me.lblNodigeParen.Location = New System.Drawing.Point(6, 205)
+        Me.lblNodigeParen.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNodigeParen.Name = "lblNodigeParen"
-        Me.lblNodigeParen.Size = New System.Drawing.Size(105, 20)
+        Me.lblNodigeParen.Size = New System.Drawing.Size(92, 17)
         Me.lblNodigeParen.TabIndex = 4
         Me.lblNodigeParen.Text = "nodige paren"
         '
@@ -85,9 +89,10 @@ Partial Class frmSpel
         '
         Me.lblTijdbezig.AutoSize = True
         Me.lblTijdbezig.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTijdbezig.Location = New System.Drawing.Point(8, 272)
+        Me.lblTijdbezig.Location = New System.Drawing.Point(6, 221)
+        Me.lblTijdbezig.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblTijdbezig.Name = "lblTijdbezig"
-        Me.lblTijdbezig.Size = New System.Drawing.Size(77, 20)
+        Me.lblTijdbezig.Size = New System.Drawing.Size(65, 17)
         Me.lblTijdbezig.TabIndex = 5
         Me.lblTijdbezig.Text = "Label tijd"
         '
@@ -95,19 +100,31 @@ Partial Class frmSpel
         '
         Me.TijdBezig.Interval = 1000
         '
+        'lblScore
+        '
+        Me.lblScore.AutoSize = True
+        Me.lblScore.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblScore.Location = New System.Drawing.Point(6, 238)
+        Me.lblScore.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblScore.Name = "lblScore"
+        Me.lblScore.Size = New System.Drawing.Size(82, 17)
+        Me.lblScore.TabIndex = 6
+        Me.lblScore.Text = "Label score"
+        '
         'frmSpel
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1100, 1047)
+        Me.ClientSize = New System.Drawing.Size(825, 717)
         Me.ControlBox = False
+        Me.Controls.Add(Me.lblScore)
         Me.Controls.Add(Me.lblTijdbezig)
         Me.Controls.Add(Me.lblNodigeParen)
         Me.Controls.Add(Me.lblAantalParen)
         Me.Controls.Add(Me.btnMenu)
         Me.Controls.Add(Me.lblTweeAfbeeldingen)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSpel"
@@ -125,5 +142,6 @@ Partial Class frmSpel
     Friend WithEvents lblNodigeParen As System.Windows.Forms.Label
     Friend WithEvents lblTijdbezig As System.Windows.Forms.Label
     Friend WithEvents TijdBezig As System.Windows.Forms.Timer
+    Friend WithEvents lblScore As System.Windows.Forms.Label
 
 End Class

@@ -1,7 +1,14 @@
 ﻿Public Class frmSpel
+<<<<<<< HEAD
     Dim highscore As Integer
+=======
+    Dim Score As Integer
+>>>>>>> Tijd + score verbeterd
     Dim Juiste As Integer
-    Dim TijdBezigSec As Integer
+    ' Variabelen voor tijd
+    Dim TijdBezigMin As Integer = 0
+    Dim TijdBezigSec As Integer = 0
+    ' ------
     Dim AantalNodigeJuiste As Integer
     Dim Afbeeldingen As New List(Of Image)
     Dim Kaarten As New List(Of KeyValuePair(Of Integer, Image))
@@ -70,7 +77,6 @@
     Sub StelFormulierIn()
         ' Locatie van alle labels + btns op het formulier
         Const tussenPlaats As Byte = 35
-
         Me.AutoSize = False
         Select Case frmMenu.MOEILIJKHEIDSGRAAD
             Case Graad.Gemakkelijk
@@ -83,8 +89,7 @@
                 Me.Width = 1250
                 Me.Height = 900
         End Select
-        Me.StartPosition = FormStartPosition.CenterScreen
-
+        Me.Location = New Point(10, 10)
         btnMenu.Location = New Point(tussenPlaats, tussenPlaats)
 
         lblTweeAfbeeldingen.Location = New Point(btnMenu.Location.X, btnMenu.Width + (tussenPlaats * 2))
@@ -104,7 +109,17 @@
         lblTijdbezig.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 3) + (tussenPlaats * 4))
         lblTijdbezig.AutoSize = False
         lblTijdbezig.Width = btnMenu.Width
-        lblTijdbezig.Text = "0"
+        lblTijdbezig.Text = "Tijd: 0 : 0"
+
+        lblScore.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 4) + (tussenPlaats * 5))
+        lblScore.AutoSize = False
+        lblScore.Width = btnMenu.Width
+        lblScore.Text = "Score: " & Score
+    End Sub
+
+    Sub testresolutie()
+        MessageBox.Show(My.Computer.Screen.Bounds.Height.ToString()) ' Thuis ook eens testen
+
     End Sub
 
     Public Sub MaakVeld(ByVal aantalRij As Integer, ByVal aantalKolom As Integer)
@@ -184,6 +199,24 @@
                 ' De afbeeldingen zijn gelijk
                 TijdAfbTonenGelijk.Start()
 
+                Dim maxPunten As Byte = 50
+
+
+                If TijdBezigMin >= 1 Then
+                    Select Case TijdBezigMin
+                        Case 1
+                            maxPunten -= 10
+                        Case 2
+                            maxPunten -= 10
+                        Case 3
+                            maxPunten -= 10
+                        Case 4
+                            maxPunten -= 10
+                        Case 5
+                            maxPunten -= 10
+                    End Select
+                End If
+                Score = "Score: " & Score + maxPunten & "+ " & maxPunten
             Else
                 ' De afbeeldingen zijn niet gelijk
                 TijdAfbTonenNietGelijk.Start()
@@ -245,6 +278,10 @@
 
     Private Sub TijdBezig_Tick(sender As System.Object, e As System.EventArgs) Handles TijdBezig.Tick
         TijdBezigSec += 1
-        lblTijdbezig.Text = TijdBezigSec
+        If TijdBezigSec = 60 Then
+            TijdBezigMin += 1
+            TijdBezigSec = 0
+        End If
+        lblTijdbezig.Text = "Tijd: " & TijdBezigMin & " : " & TijdBezigSec
     End Sub
 End Class
