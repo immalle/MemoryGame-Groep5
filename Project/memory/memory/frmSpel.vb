@@ -1,9 +1,5 @@
 ﻿Public Class frmSpel
-
-    Dim highscore As Integer
-
-    Dim Score As Integer
-
+    Dim Score As Integer = 0
     Dim Juiste As Integer
     ' Variabelen voor tijd
     Dim TijdBezigMin As Integer = 0
@@ -111,10 +107,10 @@
         lblTijdbezig.Width = btnMenu.Width
         lblTijdbezig.Text = "Tijd: 0 : 0"
 
-        lblScore.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 4) + (tussenPlaats * 5))
-        lblScore.AutoSize = False
-        lblScore.Width = btnMenu.Width
-        lblScore.Text = "Score: " & Score
+        txtScore.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 4) + (tussenPlaats * 5))
+        txtScore.AutoSize = False
+        txtScore.Width = btnMenu.Width
+        txtScore.Text = "Score: " & Score
     End Sub
 
     Sub testresolutie()
@@ -199,33 +195,18 @@
                 ' De afbeeldingen zijn gelijk
                 TijdAfbTonenGelijk.Start()
 
-                Dim maxPunten As Byte = 50
-
-
-                If TijdBezigMin >= 1 Then
-                    Select Case TijdBezigMin
-                        Case 1
-                            maxPunten -= 10
-                        Case 2
-                            maxPunten -= 10
-                        Case 3
-                            maxPunten -= 10
-                        Case 4
-                            maxPunten -= 10
-                        Case 5
-                            maxPunten -= 10
-                    End Select
-                End If
-                Score = "Score: " & Score + maxPunten & "+ " & maxPunten
-            Else
-                ' De afbeeldingen zijn niet gelijk
-                TijdAfbTonenNietGelijk.Start()
-            End If
-            AfbTeZien.Clear()
+                Dim punten As Byte = 50
+                Score += punten
+                txtScore.Text = "Score: " & Score
         Else
-            sender.Image = Kaarten(sender.Name).Value
-            GekliktePicBox.Add(sender)
-            AfbTeZien.Add(sender.Image)
+            ' De afbeeldingen zijn niet gelijk
+            TijdAfbTonenNietGelijk.Start()
+        End If
+        AfbTeZien.Clear()
+        Else
+        sender.Image = Kaarten(sender.Name).Value
+        GekliktePicBox.Add(sender)
+        AfbTeZien.Add(sender.Image)
         End If
     End Sub
 
