@@ -1,9 +1,9 @@
 ﻿Public Class frmSpel
-<<<<<<< HEAD
+
     Dim highscore As Integer
-=======
+
     Dim Score As Integer
->>>>>>> Tijd + score verbeterd
+
     Dim Juiste As Integer
     ' Variabelen voor tijd
     Dim TijdBezigMin As Integer = 0
@@ -259,6 +259,7 @@
         ' Als alle paren gevonden zijn, vragen of ze naar het menu willen terugkeren of gewoon stoppen
         If Juiste = AantalNodigeJuiste Then
             MessageBox.Show("U heeft gewonnen.", "Proficiat!", MessageBoxButtons.OK)
+
             If MessageBox.Show("Wilt u terug naar het hoofdmenu", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                 frmMenu.Show()
                 Me.Close()

@@ -87,10 +87,10 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="frmHighscore.Designer.vb">
+      <DependentUpon>frmHighscore.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="frmHighscore.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSpel.vb">
@@ -128,8 +128,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="frmHighscore.resx">
+      <DependentUpon>frmHighscore.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.vb</DependentUpon>
@@ -598,6 +598,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Highscore.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\Crowd_Applause-Thore-672347161.mp3" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

@@ -73,5 +73,12 @@ Namespace My.Resources
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
+        
+        Friend ReadOnly Property applaus() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("applaus", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
     End Module
 End Namespace
