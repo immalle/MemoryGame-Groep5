@@ -28,16 +28,17 @@ Partial Class frmMenu
         Me.rbMoeilijk = New System.Windows.Forms.RadioButton()
         Me.rbNormaal = New System.Windows.Forms.RadioButton()
         Me.rbGemakkelijk = New System.Windows.Forms.RadioButton()
+        Me.btnHighscore = New System.Windows.Forms.Button()
         Me.gbGraden.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnPlay
         '
         Me.btnPlay.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPlay.Location = New System.Drawing.Point(400, 402)
-        Me.btnPlay.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnPlay.Location = New System.Drawing.Point(300, 327)
+        Me.btnPlay.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnPlay.Name = "btnPlay"
-        Me.btnPlay.Size = New System.Drawing.Size(153, 58)
+        Me.btnPlay.Size = New System.Drawing.Size(115, 47)
         Me.btnPlay.TabIndex = 0
         Me.btnPlay.Text = "Play!"
         Me.btnPlay.UseVisualStyleBackColor = True
@@ -45,10 +46,10 @@ Partial Class frmMenu
         'btnQuit
         '
         Me.btnQuit.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnQuit.Location = New System.Drawing.Point(12, 402)
-        Me.btnQuit.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnQuit.Location = New System.Drawing.Point(9, 327)
+        Me.btnQuit.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnQuit.Name = "btnQuit"
-        Me.btnQuit.Size = New System.Drawing.Size(153, 58)
+        Me.btnQuit.Size = New System.Drawing.Size(115, 47)
         Me.btnQuit.TabIndex = 1
         Me.btnQuit.Text = "Quit!"
         Me.btnQuit.UseVisualStyleBackColor = True
@@ -58,11 +59,11 @@ Partial Class frmMenu
         Me.gbGraden.Controls.Add(Me.rbMoeilijk)
         Me.gbGraden.Controls.Add(Me.rbNormaal)
         Me.gbGraden.Controls.Add(Me.rbGemakkelijk)
-        Me.gbGraden.Location = New System.Drawing.Point(353, 12)
-        Me.gbGraden.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.gbGraden.Location = New System.Drawing.Point(265, 10)
+        Me.gbGraden.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.gbGraden.Name = "gbGraden"
-        Me.gbGraden.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.gbGraden.Size = New System.Drawing.Size(200, 224)
+        Me.gbGraden.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.gbGraden.Size = New System.Drawing.Size(150, 182)
         Me.gbGraden.TabIndex = 2
         Me.gbGraden.TabStop = False
         Me.gbGraden.Text = "Moeilijkheidsgraad"
@@ -70,10 +71,10 @@ Partial Class frmMenu
         'rbMoeilijk
         '
         Me.rbMoeilijk.AutoSize = True
-        Me.rbMoeilijk.Location = New System.Drawing.Point(5, 177)
-        Me.rbMoeilijk.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.rbMoeilijk.Location = New System.Drawing.Point(4, 144)
+        Me.rbMoeilijk.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.rbMoeilijk.Name = "rbMoeilijk"
-        Me.rbMoeilijk.Size = New System.Drawing.Size(100, 26)
+        Me.rbMoeilijk.Size = New System.Drawing.Size(45, 14)
         Me.rbMoeilijk.TabIndex = 2
         Me.rbMoeilijk.TabStop = True
         Me.rbMoeilijk.Text = "Moeilijk"
@@ -82,10 +83,10 @@ Partial Class frmMenu
         'rbNormaal
         '
         Me.rbNormaal.AutoSize = True
-        Me.rbNormaal.Location = New System.Drawing.Point(5, 106)
-        Me.rbNormaal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.rbNormaal.Location = New System.Drawing.Point(4, 86)
+        Me.rbNormaal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.rbNormaal.Name = "rbNormaal"
-        Me.rbNormaal.Size = New System.Drawing.Size(109, 26)
+        Me.rbNormaal.Size = New System.Drawing.Size(48, 14)
         Me.rbNormaal.TabIndex = 1
         Me.rbNormaal.TabStop = True
         Me.rbNormaal.Text = "Normaal"
@@ -94,24 +95,36 @@ Partial Class frmMenu
         'rbGemakkelijk
         '
         Me.rbGemakkelijk.AutoSize = True
-        Me.rbGemakkelijk.Location = New System.Drawing.Point(5, 42)
-        Me.rbGemakkelijk.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.rbGemakkelijk.Location = New System.Drawing.Point(4, 34)
+        Me.rbGemakkelijk.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.rbGemakkelijk.Name = "rbGemakkelijk"
-        Me.rbGemakkelijk.Size = New System.Drawing.Size(140, 26)
+        Me.rbGemakkelijk.Size = New System.Drawing.Size(62, 14)
         Me.rbGemakkelijk.TabIndex = 0
         Me.rbGemakkelijk.TabStop = True
         Me.rbGemakkelijk.Text = "Gemakkelijk"
         Me.rbGemakkelijk.UseVisualStyleBackColor = True
         '
+        'btnHighscore
+        '
+        Me.btnHighscore.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHighscore.Location = New System.Drawing.Point(156, 327)
+        Me.btnHighscore.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnHighscore.Name = "btnHighscore"
+        Me.btnHighscore.Size = New System.Drawing.Size(115, 47)
+        Me.btnHighscore.TabIndex = 3
+        Me.btnHighscore.Text = "Highscore!"
+        Me.btnHighscore.UseVisualStyleBackColor = True
+        '
         'frmMenu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(565, 473)
+        Me.ClientSize = New System.Drawing.Size(424, 384)
+        Me.Controls.Add(Me.btnHighscore)
         Me.Controls.Add(Me.gbGraden)
         Me.Controls.Add(Me.btnQuit)
         Me.Controls.Add(Me.btnPlay)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "frmMenu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Menu"
@@ -126,4 +139,5 @@ Partial Class frmMenu
     Friend WithEvents rbMoeilijk As System.Windows.Forms.RadioButton
     Friend WithEvents rbNormaal As System.Windows.Forms.RadioButton
     Friend WithEvents rbGemakkelijk As System.Windows.Forms.RadioButton
+    Friend WithEvents btnHighscore As System.Windows.Forms.Button
 End Class

@@ -1,4 +1,5 @@
 ﻿Public Class frmSpel
+    Dim highscore As Integer
     Dim Juiste As Integer
     Dim TijdBezigSec As Integer
     Dim AantalNodigeJuiste As Integer

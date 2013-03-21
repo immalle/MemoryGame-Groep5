@@ -32,4 +32,9 @@
     Private Sub frmMenu_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         PATH = Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\Afbeeldingen"
     End Sub
+
+    Private Sub btnHighscore_Click(sender As System.Object, e As System.EventArgs) Handles btnHighscore.Click
+        frmHighscore.Show()
+
+    End Sub
 End Class
