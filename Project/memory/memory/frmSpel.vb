@@ -107,10 +107,10 @@
         lblTijdbezig.Width = btnMenu.Width
         lblTijdbezig.Text = "Tijd: 0 : 0"
 
-        txtScore.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 4) + (tussenPlaats * 5))
-        txtScore.AutoSize = False
-        txtScore.Width = btnMenu.Width
-        txtScore.Text = "Score: " & Score
+        lblScore.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 4) + (tussenPlaats * 5))
+        lblScore.AutoSize = False
+        lblScore.Width = btnMenu.Width
+        lblScore.Text = "Score: " & Score
     End Sub
 
     Sub testresolutie()
@@ -191,17 +191,20 @@
             sender.Image = Kaarten(sender.Name).Value
             GekliktePicBox.Add(sender)
             AfbTeZien.Add(sender.Image)
-            If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1)) Then
+            Dim punten As Byte = 50
+            If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1), punten) Then
                 ' De afbeeldingen zijn gelijk
                 TijdAfbTonenGelijk.Start()
 
-                Dim punten As Byte = 50
+
                 Score += punten
-                txtScore.Text = "Score: " & Score
-        Else
-            ' De afbeeldingen zijn niet gelijk
-            TijdAfbTonenNietGelijk.Start()
-        End If
+                lblScore.Text = "Score: " & Score
+            Else
+                ' De afbeeldingen zijn niet gelijk
+                TijdAfbTonenNietGelijk.Start()
+                Score -= 10
+                lblScore.Text = "Score: " & Score
+            End If
         AfbTeZien.Clear()
         Else
         sender.Image = Kaarten(sender.Name).Value
@@ -210,13 +213,13 @@
         End If
     End Sub
 
-    Function AfbeeldingenVergelijken(ByVal image1 As Image, ByVal image2 As Image) As Boolean
+    Function AfbeeldingenVergelijken(ByVal image1 As Image, ByVal image2 As Image, ByVal punten As Byte) As Boolean
         ' Controleren of de 2 aangeklikte afbeeldingen hetzelfde zijn
         If image1.Tag = image2.Tag Then
-            lblTweeAfbeeldingen.Text = "Een paar"
+            lblTweeAfbeeldingen.Text = "Een paar " & vbCrLf & "+ " & punten & " punten."
             Return True
         Else
-            lblTweeAfbeeldingen.Text = "Geen paar"
+            lblTweeAfbeeldingen.Text = "Geen paar" & vbCrLf & "- " & 10 & " punten."
             Return False
         End If
     End Function
