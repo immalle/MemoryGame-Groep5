@@ -191,13 +191,10 @@
             sender.Image = Kaarten(sender.Name).Value
             GekliktePicBox.Add(sender)
             AfbTeZien.Add(sender.Image)
-            Dim punten As Byte = 50
-            If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1), punten) Then
+            If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1), 50) Then
                 ' De afbeeldingen zijn gelijk
                 TijdAfbTonenGelijk.Start()
-
-
-                Score += punten
+                Score += 50
                 lblScore.Text = "Score: " & Score
             Else
                 ' De afbeeldingen zijn niet gelijk
