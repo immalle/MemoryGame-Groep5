@@ -109,7 +109,7 @@
 
         lblScore.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 4) + (tussenPlaats * 5))
         lblScore.AutoSize = False
-        lblScore.Width = btnMenu.Width
+        lblScore.Width = btnMenu.Width + 100
         lblScore.Text = "Score: " & Score
     End Sub
 
