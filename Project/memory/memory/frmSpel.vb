@@ -76,13 +76,13 @@
         Me.AutoSize = False
         Select Case frmMenu.MOEILIJKHEIDSGRAAD
             Case Graad.Easy
-                Me.Width = 1000
+                Me.Width = 1250
                 Me.Height = 750
             Case Graad.Normal
-                Me.Width = 1250
+                Me.Width = 1350
                 Me.Height = 750
             Case Graad.Hard
-                Me.Width = 1250
+                Me.Width = 1350
                 Me.Height = 900
         End Select
         Me.Location = New Point(10, 10)
@@ -113,17 +113,12 @@
         lblScore.Text = "Score: " & Score
     End Sub
 
-    Sub testresolutie()
-        MessageBox.Show(My.Computer.Screen.Bounds.Height.ToString()) ' Thuis ook eens testen
-
-    End Sub
-
     Public Sub MaakVeld(ByVal aantalRij As Integer, ByVal aantalKolom As Integer)
         ' De PictureBoxen maken en toevoegen aan de controls van het formulier
         Dim random As New Random()
         Dim nr As Byte = 0
         For i = 0 To aantalRij - 1
-            For j = 1 To aantalKolom
+            For j = 2 To aantalKolom + 1
                 Dim randomGetal As Integer = random.Next(Afbeeldingen.Count)
                 ' Basis instellingen voor elke picbox
                 Dim picBox As New PictureBox
@@ -239,7 +234,8 @@
 
         ' Als alle paren gevonden zijn, vragen of ze naar het menu willen terugkeren of gewoon stoppen
         If Juiste = AantalNodigeJuiste Then
-            MessageBox.Show("U heeft gewonnen.", "Proficiat!", MessageBoxButtons.OK)
+            TijdBezig.Stop()
+            MessageBox.Show("U heeft gewonnen." & vbCrLf & "U scoorde " & Score & " punten in " & lblTijdbezig.Text.Remove(0, 5), "Proficiat!", MessageBoxButtons.OK)
 
             If MessageBox.Show("Wilt u terug naar het hoofdmenu", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                 frmMenu.Show()
