@@ -618,6 +618,13 @@
     <None Include="Resources\HighscoreStandaard.png" />
     <None Include="Resources\AchtergrondMenu.png" />
     <None Include="Resources\HighscoreHoverTest.png" />
+    <None Include="Resources\EasyStandaard.png" />
+    <None Include="Resources\HardStandaard.png" />
+    <None Include="Resources\NormalStandaard.png" />
+    <None Include="Resources\EasyHover.png" />
+    <None Include="Resources\Unchecked.png" />
+    <None Include="Resources\CheckHover.png" />
+    <None Include="Resources\Checked.png" />
     <Content Include="Scores.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -14,19 +14,19 @@
     Dim Paren As New List(Of Image) ' Alle paren opslagen en later tonen bij juiste paar zie sub Overzicht
 
     Enum Graad  ' Enum voor de moeilijdsgraden
-        Gemakkelijk
-        Normaal
-        Moeilijk
+        Easy
+        Normal
+        Hard
     End Enum
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         ' Afhankelijk van de moeilijkheidsgraad, de code anders uitvoeren
         Select Case frmMenu.MOEILIJKHEIDSGRAAD
-            Case Graad.Gemakkelijk
+            Case Graad.Easy
                 GraadMakkelijk()
-            Case Graad.Normaal
+            Case Graad.Normal
                 GraadNormaal()
-            Case Graad.Moeilijk
+            Case Graad.Hard
                 GraadMoeilijk()
         End Select
         TijdBezig.Start()
@@ -75,13 +75,13 @@
         Const tussenPlaats As Byte = 35
         Me.AutoSize = False
         Select Case frmMenu.MOEILIJKHEIDSGRAAD
-            Case Graad.Gemakkelijk
+            Case Graad.Easy
                 Me.Width = 1000
                 Me.Height = 750
-            Case Graad.Normaal
+            Case Graad.Normal
                 Me.Width = 1250
                 Me.Height = 750
-            Case Graad.Moeilijk
+            Case Graad.Hard
                 Me.Width = 1250
                 Me.Height = 900
         End Select

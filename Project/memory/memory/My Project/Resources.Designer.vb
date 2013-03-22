@@ -81,6 +81,41 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property Checked() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Checked", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property CheckHover() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("CheckHover", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property EasyHover() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("EasyHover", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property EasyStandaard() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("EasyStandaard", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property HardStandaard() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("HardStandaard", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property HighscoreHover() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("HighscoreHover", resourceCulture)
@@ -91,6 +126,13 @@ Namespace My.Resources
         Friend ReadOnly Property HighscoreStandaard() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("HighscoreStandaard", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property NormalStandaard() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("NormalStandaard", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -119,6 +161,13 @@ Namespace My.Resources
         Friend ReadOnly Property QuitStandaard() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("QuitStandaard", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property Unchecked() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Unchecked", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
