@@ -25,6 +25,7 @@
     End Sub
 
     Private Sub frmMenu_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        Me.BackgroundImage = My.Resources.AchtergrondMenu
         PATH = Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\Afbeeldingen"
         picBoxPlay.Image = My.Resources.PlayStandaard
         PicBoxQuit.Image = My.Resources.QuitStandaard

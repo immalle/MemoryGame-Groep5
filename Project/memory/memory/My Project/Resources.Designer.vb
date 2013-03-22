@@ -60,6 +60,13 @@ Namespace My.Resources
             End Set
         End Property
         
+        Friend ReadOnly Property AchtergrondMenu() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AchtergrondMenu", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property achterkant() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("achterkant", resourceCulture)

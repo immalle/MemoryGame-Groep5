@@ -616,6 +616,8 @@
     <None Include="Resources\QuitStandaard.png" />
     <None Include="Resources\HighscoreHover.png" />
     <None Include="Resources\HighscoreStandaard.png" />
+    <None Include="Resources\AchtergrondMenu.png" />
+    <None Include="Resources\HighscoreHoverTest.png" />
     <Content Include="Scores.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
