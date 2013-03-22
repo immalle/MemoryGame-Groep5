@@ -44,7 +44,7 @@ Partial Class frmMenu
         '
         'picBoxNormalCheck
         '
-        Me.picBoxNormalCheck.Location = New System.Drawing.Point(267, 134)
+        Me.picBoxNormalCheck.Location = New System.Drawing.Point(129, 162)
         Me.picBoxNormalCheck.Name = "picBoxNormalCheck"
         Me.picBoxNormalCheck.Size = New System.Drawing.Size(60, 60)
         Me.picBoxNormalCheck.TabIndex = 12
@@ -52,7 +52,7 @@ Partial Class frmMenu
         '
         'picBoxHardCheck
         '
-        Me.picBoxHardCheck.Location = New System.Drawing.Point(267, 205)
+        Me.picBoxHardCheck.Location = New System.Drawing.Point(129, 228)
         Me.picBoxHardCheck.Name = "picBoxHardCheck"
         Me.picBoxHardCheck.Size = New System.Drawing.Size(60, 60)
         Me.picBoxHardCheck.TabIndex = 11
@@ -60,7 +60,7 @@ Partial Class frmMenu
         '
         'picBoxEasyCheck
         '
-        Me.picBoxEasyCheck.Location = New System.Drawing.Point(267, 63)
+        Me.picBoxEasyCheck.Location = New System.Drawing.Point(129, 96)
         Me.picBoxEasyCheck.Name = "picBoxEasyCheck"
         Me.picBoxEasyCheck.Size = New System.Drawing.Size(60, 60)
         Me.picBoxEasyCheck.TabIndex = 10
@@ -68,7 +68,7 @@ Partial Class frmMenu
         '
         'picBoxHard
         '
-        Me.picBoxHard.Location = New System.Drawing.Point(333, 205)
+        Me.picBoxHard.Location = New System.Drawing.Point(195, 228)
         Me.picBoxHard.Name = "picBoxHard"
         Me.picBoxHard.Size = New System.Drawing.Size(150, 60)
         Me.picBoxHard.TabIndex = 9
@@ -76,7 +76,7 @@ Partial Class frmMenu
         '
         'picBoxNormal
         '
-        Me.picBoxNormal.Location = New System.Drawing.Point(333, 134)
+        Me.picBoxNormal.Location = New System.Drawing.Point(195, 162)
         Me.picBoxNormal.Name = "picBoxNormal"
         Me.picBoxNormal.Size = New System.Drawing.Size(150, 60)
         Me.picBoxNormal.TabIndex = 8
@@ -84,7 +84,7 @@ Partial Class frmMenu
         '
         'picBoxEasy
         '
-        Me.picBoxEasy.Location = New System.Drawing.Point(333, 63)
+        Me.picBoxEasy.Location = New System.Drawing.Point(195, 96)
         Me.picBoxEasy.Name = "picBoxEasy"
         Me.picBoxEasy.Size = New System.Drawing.Size(150, 60)
         Me.picBoxEasy.TabIndex = 7
