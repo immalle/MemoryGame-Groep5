@@ -22,10 +22,6 @@ Partial Class frmMenu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.gbGraden = New System.Windows.Forms.GroupBox()
-        Me.rbMoeilijk = New System.Windows.Forms.RadioButton()
-        Me.rbNormaal = New System.Windows.Forms.RadioButton()
-        Me.rbGemakkelijk = New System.Windows.Forms.RadioButton()
         Me.picBoxNormalCheck = New System.Windows.Forms.PictureBox()
         Me.picBoxHardCheck = New System.Windows.Forms.PictureBox()
         Me.picBoxEasyCheck = New System.Windows.Forms.PictureBox()
@@ -35,7 +31,6 @@ Partial Class frmMenu
         Me.picBoxHighscore = New System.Windows.Forms.PictureBox()
         Me.PicBoxQuit = New System.Windows.Forms.PictureBox()
         Me.picBoxPlay = New System.Windows.Forms.PictureBox()
-        Me.gbGraden.SuspendLayout()
         CType(Me.picBoxNormalCheck, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picBoxHardCheck, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picBoxEasyCheck, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,56 +41,6 @@ Partial Class frmMenu
         CType(Me.PicBoxQuit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picBoxPlay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'gbGraden
-        '
-        Me.gbGraden.Controls.Add(Me.rbMoeilijk)
-        Me.gbGraden.Controls.Add(Me.rbNormaal)
-        Me.gbGraden.Controls.Add(Me.rbGemakkelijk)
-        Me.gbGraden.Location = New System.Drawing.Point(12, 11)
-        Me.gbGraden.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.gbGraden.Name = "gbGraden"
-        Me.gbGraden.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.gbGraden.Size = New System.Drawing.Size(200, 224)
-        Me.gbGraden.TabIndex = 2
-        Me.gbGraden.TabStop = False
-        Me.gbGraden.Text = "Moeilijkheidsgraad"
-        '
-        'rbMoeilijk
-        '
-        Me.rbMoeilijk.AutoSize = True
-        Me.rbMoeilijk.Location = New System.Drawing.Point(5, 177)
-        Me.rbMoeilijk.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.rbMoeilijk.Name = "rbMoeilijk"
-        Me.rbMoeilijk.Size = New System.Drawing.Size(75, 21)
-        Me.rbMoeilijk.TabIndex = 2
-        Me.rbMoeilijk.TabStop = True
-        Me.rbMoeilijk.Text = "Moeilijk"
-        Me.rbMoeilijk.UseVisualStyleBackColor = True
-        '
-        'rbNormaal
-        '
-        Me.rbNormaal.AutoSize = True
-        Me.rbNormaal.Location = New System.Drawing.Point(5, 106)
-        Me.rbNormaal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.rbNormaal.Name = "rbNormaal"
-        Me.rbNormaal.Size = New System.Drawing.Size(82, 21)
-        Me.rbNormaal.TabIndex = 1
-        Me.rbNormaal.TabStop = True
-        Me.rbNormaal.Text = "Normaal"
-        Me.rbNormaal.UseVisualStyleBackColor = True
-        '
-        'rbGemakkelijk
-        '
-        Me.rbGemakkelijk.AutoSize = True
-        Me.rbGemakkelijk.Location = New System.Drawing.Point(5, 42)
-        Me.rbGemakkelijk.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.rbGemakkelijk.Name = "rbGemakkelijk"
-        Me.rbGemakkelijk.Size = New System.Drawing.Size(105, 21)
-        Me.rbGemakkelijk.TabIndex = 0
-        Me.rbGemakkelijk.TabStop = True
-        Me.rbGemakkelijk.Text = "Gemakkelijk"
-        Me.rbGemakkelijk.UseVisualStyleBackColor = True
         '
         'picBoxNormalCheck
         '
@@ -186,13 +131,10 @@ Partial Class frmMenu
         Me.Controls.Add(Me.picBoxHighscore)
         Me.Controls.Add(Me.PicBoxQuit)
         Me.Controls.Add(Me.picBoxPlay)
-        Me.Controls.Add(Me.gbGraden)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "frmMenu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Menu"
-        Me.gbGraden.ResumeLayout(False)
-        Me.gbGraden.PerformLayout()
         CType(Me.picBoxNormalCheck, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picBoxHardCheck, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picBoxEasyCheck, System.ComponentModel.ISupportInitialize).EndInit()
@@ -205,10 +147,6 @@ Partial Class frmMenu
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents gbGraden As System.Windows.Forms.GroupBox
-    Friend WithEvents rbMoeilijk As System.Windows.Forms.RadioButton
-    Friend WithEvents rbNormaal As System.Windows.Forms.RadioButton
-    Friend WithEvents rbGemakkelijk As System.Windows.Forms.RadioButton
     Friend WithEvents picBoxPlay As System.Windows.Forms.PictureBox
     Friend WithEvents PicBoxQuit As System.Windows.Forms.PictureBox
     Friend WithEvents picBoxHighscore As System.Windows.Forms.PictureBox

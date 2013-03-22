@@ -1,24 +1,9 @@
 ﻿Public Class frmMenu
     Public PATH As String
     Public MOEILIJKHEIDSGRAAD As frmSpel.Graad
-
-    Private Sub rbGemakkelijk_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbGemakkelijk.CheckedChanged
-        If rbGemakkelijk.Checked = True Then
-            MOEILIJKHEIDSGRAAD = frmSpel.Graad.Easy
-        End If
-    End Sub
-
-    Private Sub rbNormaal_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbNormaal.CheckedChanged
-        If rbNormaal.Checked = True Then
-            MOEILIJKHEIDSGRAAD = frmSpel.Graad.Normal
-        End If
-    End Sub
-
-    Private Sub rbMoeilijk_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rbMoeilijk.CheckedChanged
-        If rbMoeilijk.Checked = True Then
-            MOEILIJKHEIDSGRAAD = frmSpel.Graad.Hard
-        End If
-    End Sub
+    Dim EasyChecked As Boolean = False
+    Dim NormalChecked As Boolean = False
+    Dim HardChecked As Boolean = False
 
     Private Sub frmMenu_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.BackgroundImage = My.Resources.AchtergrondMenu
@@ -51,11 +36,9 @@
         frmSpel.Show()
         Me.Hide()
     End Sub
-
     '------------------------------------------------
 
     ' PictureBox QUIT --------------------------------
-
     Private Sub PicBoxQuit_Click(sender As System.Object, e As System.EventArgs) Handles PicBoxQuit.Click
         Me.Close()
     End Sub
@@ -67,11 +50,9 @@
     Private Sub PicBoxQuit_MouseLeave(sender As PictureBox, e As System.EventArgs) Handles PicBoxQuit.MouseLeave
         sender.Image = My.Resources.QuitStandaard
     End Sub
-
     ' ---------------------------------------------------
 
-    'PictureBox  HIGHSCORE ------------------------------
-
+    ' PictureBox  HIGHSCORE ------------------------------
     Private Sub picBoxHighscore_Click(sender As System.Object, e As System.EventArgs) Handles picBoxHighscore.Click
         frmHighscore.Show()
     End Sub
@@ -83,54 +64,90 @@
     Private Sub picBoxHighscore_MouseLeave(sender As PictureBox, e As System.EventArgs) Handles picBoxHighscore.MouseLeave
         sender.Image = My.Resources.HighscoreStandaard
     End Sub
-
     ' --------------------------------------------------
 
     ' PictureBox EASY ----------------------------------
-    Private Sub picBoxEasy_MouseLeave(sender As PictureBox, e As System.EventArgs) Handles picBoxEasy.MouseLeave
-        sender.Image = My.Resources.EasyStandaard
-    End Sub
-
     Private Sub picBoxEasyCheck_Click(sender As PictureBox, e As System.EventArgs) Handles picBoxEasyCheck.Click
         sender.Image = My.Resources.Checked
+        picBoxNormalCheck.Image = My.Resources.Unchecked
+        picBoxHardCheck.Image = My.Resources.Unchecked
+        EasyChecked = True
+        NormalChecked = False
+        HardChecked = False
+        MOEILIJKHEIDSGRAAD = frmSpel.Graad.Easy
     End Sub
 
     Private Sub picBoxEasyCheck_MouseEnter(sender As PictureBox, e As System.EventArgs) Handles picBoxEasyCheck.MouseEnter
-        sender.Image = My.Resources.CheckHover
+        If EasyChecked Then
+            sender.Image = My.Resources.Checked
+        Else
+            sender.Image = My.Resources.CheckHover
+        End If
     End Sub
 
     Private Sub picBoxEasyCheck_MouseLeave(sender As PictureBox, e As System.EventArgs) Handles picBoxEasyCheck.MouseLeave
-        sender.Image = My.Resources.Unchecked
+        If EasyChecked And NormalChecked = False And HardChecked = False Then
+            sender.Image = My.Resources.Checked
+        Else
+            sender.Image = My.Resources.Unchecked
+        End If
     End Sub
-
     ' --------------------------------------------------
 
     ' PictureBox NORMAL -----------------------------------
     Private Sub picBoxNormalCheck_Click(sender As PictureBox, e As System.EventArgs) Handles picBoxNormalCheck.Click
         sender.Image = My.Resources.Checked
+        picBoxEasyCheck.Image = My.Resources.Unchecked
+        picBoxHardCheck.Image = My.Resources.Unchecked
+        NormalChecked = True
+        EasyChecked = False
+        HardChecked = False
+        MOEILIJKHEIDSGRAAD = frmSpel.Graad.Normal
     End Sub
 
     Private Sub picBoxNormalCheck_MouseEnter(sender As PictureBox, e As System.EventArgs) Handles picBoxNormalCheck.MouseEnter
-        sender.Image = My.Resources.CheckHover
+        If NormalChecked Then
+            sender.Image = My.Resources.Checked
+        Else
+            sender.Image = My.Resources.CheckHover
+        End If
     End Sub
 
-
     Private Sub picBoxNormalCheck_MouseLeave(sender As PictureBox, e As System.EventArgs) Handles picBoxNormalCheck.MouseLeave
-        sender.Image = My.Resources.Unchecked
+        If NormalChecked And EasyChecked = False And HardChecked = False Then
+            sender.Image = My.Resources.Checked
+        Else
+            sender.Image = My.Resources.Unchecked
+        End If
     End Sub
     ' ------------------------------------------------------
 
     ' PictureBox HARD -------------------------------------
     Private Sub picBoxHardCheck_Click(sender As PictureBox, e As System.EventArgs) Handles picBoxHardCheck.Click
         sender.Image = My.Resources.Checked
+        picBoxNormalCheck.Image = My.Resources.Unchecked
+        picBoxEasyCheck.Image = My.Resources.Unchecked
+        HardChecked = True
+        EasyChecked = False
+        NormalChecked = False
+        MOEILIJKHEIDSGRAAD = frmSpel.Graad.Hard
     End Sub
 
     Private Sub picBoxHardCheck_MouseEnter(sender As PictureBox, e As System.EventArgs) Handles picBoxHardCheck.MouseEnter
-        sender.Image = My.Resources.CheckHover
+        If HardChecked Then
+            sender.Image = My.Resources.Checked
+        Else
+            sender.Image = My.Resources.CheckHover
+        End If
     End Sub
 
     Private Sub picBoxHardCheck_MouseLeave(sender As PictureBox, e As System.EventArgs) Handles picBoxHardCheck.MouseLeave
-        sender.Image = My.Resources.Unchecked
+        If HardChecked And EasyChecked = False And NormalChecked = False Then
+            sender.Image = My.Resources.Checked
+        Else
+            sender.Image = My.Resources.Unchecked
+        End If
+
     End Sub
     ' --------------------------------------------------------
 
