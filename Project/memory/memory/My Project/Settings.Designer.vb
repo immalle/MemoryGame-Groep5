@@ -64,6 +64,17 @@ Namespace My
                 Return CType(Me("HighscoreConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Scores.mdf;Integrated S"& _ 
+            "ecurity=True;User Instance=True")>  _
+        Public ReadOnly Property ScoresConnectionString() As String
+            Get
+                Return CType(Me("ScoresConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

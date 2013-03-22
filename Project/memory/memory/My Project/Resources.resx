@@ -121,10 +121,25 @@
   <data name="achterkant" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\achterkant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="achterkantTest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\achterkantTest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="applaus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Crowd_Applause-Thore-672347161.mp3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HighscoreHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HighscoreHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HighscoreStandaard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HighscoreStandaard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayStandaard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayStandaard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="QuitHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\QuitHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="QuitStandaard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\QuitStandaard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
