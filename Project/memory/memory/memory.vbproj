@@ -106,6 +106,12 @@
     <Compile Include="frmMenu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmLoadLevel.Designer.vb">
+      <DependentUpon>frmLoadLevel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoadLevel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSpel.resx">
       <DependentUpon>frmSpel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoadLevel.resx">
+      <DependentUpon>frmLoadLevel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -625,6 +634,7 @@
     <None Include="Resources\Unchecked.png" />
     <None Include="Resources\CheckHover.png" />
     <None Include="Resources\Checked.png" />
+    <None Include="Resources\AchterkantKaart.png" />
     <Content Include="Scores.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

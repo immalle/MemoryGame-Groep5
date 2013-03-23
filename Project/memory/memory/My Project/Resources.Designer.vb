@@ -60,9 +60,9 @@ Namespace My.Resources
             End Set
         End Property
         
-        Friend ReadOnly Property AchtergrondMenu() As System.Drawing.Bitmap
+        Friend ReadOnly Property Achtergrond() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("AchtergrondMenu", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Achtergrond", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -70,6 +70,13 @@ Namespace My.Resources
         Friend ReadOnly Property achterkant() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("achterkant", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property AchterkantKaart() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AchterkantKaart", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -91,13 +98,6 @@ Namespace My.Resources
         Friend ReadOnly Property CheckHover() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("CheckHover", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property EasyHover() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("EasyHover", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

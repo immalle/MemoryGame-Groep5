@@ -21,6 +21,9 @@
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         ' Afhankelijk van de moeilijkheidsgraad, de code anders uitvoeren
+        Me.Visible = False
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+        Me.BackgroundImage = My.Resources.Achtergrond
         Select Case frmMenu.MOEILIJKHEIDSGRAAD
             Case Graad.Easy
                 GraadMakkelijk()
@@ -42,6 +45,7 @@
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 4x4
         MaakVeld(4, 4)
+        frmLoadLevel.Close()
     End Sub
 
     Sub GraadNormaal()
@@ -50,11 +54,11 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
-
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 4x6
         MaakVeld(4, 6)
+        frmLoadLevel.Close()
     End Sub
 
     Sub GraadMoeilijk()
@@ -63,11 +67,11 @@
         Juiste = 0
         ' Stel formulier in op juiste verhoudingen
         StelFormulierIn()
-
         ' Voeg de afbeeldingen toe
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 5x6
         MaakVeld(5, 6)
+        frmLoadLevel.Close()
     End Sub
 
     Sub StelFormulierIn()
@@ -85,7 +89,7 @@
                 Me.Width = 1350
                 Me.Height = 900
         End Select
-        Me.Location = New Point(10, 10)
+        Me.Location = New Point(100, 50)
         btnMenu.Location = New Point(tussenPlaats, tussenPlaats)
 
         lblTweeAfbeeldingen.Location = New Point(btnMenu.Location.X, btnMenu.Width + (tussenPlaats * 2))
@@ -128,7 +132,7 @@
                 picBox.Location = New Point(170 * j, 170 * i)
                 picBox.SizeMode = PictureBoxSizeMode.StretchImage
                 ' De afbeelding meegeven + opslaan en daarna de achterkant tonen v/d kaart
-                picBox.BackColor = Color.Transparent
+                picBox.BackgroundImage = My.Resources.AchterkantKaart
                 Kaarten.Add(New KeyValuePair(Of Integer, Image)(picBox.Name, AfbeeldingInstellen(randomGetal)))
                 picBox.Image = My.Resources.achterkant
                 picBox.BorderStyle = BorderStyle.FixedSingle
@@ -144,11 +148,11 @@
 
     Sub VoegAfbeeldingenToe(aantalAfbeeldingen As Byte)
         ' Alle afbeeldingen toevoegen aan een lijst
-        For i = 1 To 46
-            Dim afb As Image
-            If i > 9 Then
-                afb = Image.FromFile(frmMenu.PATH & "\Afb" & i & ".png")
-                AlleAfbeeldingen.Add(afb)
+        For i = 1 To 46                                                     ' Misschien omzetten naar For Each
+            Dim afb As Image                                                ' Omdat je niet perse over de afbeeldingsnamen moet loopen
+            If i > 9 Then                                                   ' bv. *.png zou ook moeten werken 
+                afb = Image.FromFile(frmMenu.PATH & "\Afb" & i & ".png")    ' Je kan dan flexibeler zijn met de afbeeldingen die je wil gebruiken
+                AlleAfbeeldingen.Add(afb)                                   ' Om eigen afbeeldingen te gebruiken bijvoorbeeld
             Else
                 afb = Image.FromFile(frmMenu.PATH & "\Afb0" & i & ".png")
                 AlleAfbeeldingen.Add(afb)
@@ -184,8 +188,8 @@
         ' Als op een picturebox geklikt word, 
         If AfbTeZien.Count = 1 Then
             sender.Image = Kaarten(sender.Name).Value
-            GekliktePicBox.Add(sender)
             AfbTeZien.Add(sender.Image)
+            GekliktePicBox.Add(sender)
             If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1), 50) Then
                 ' De afbeeldingen zijn gelijk
                 TijdAfbTonenGelijk.Start()
@@ -197,12 +201,13 @@
                 Score -= 10
                 lblScore.Text = "Score: " & Score
             End If
-        AfbTeZien.Clear()
+            AfbTeZien.Clear()
         Else
-        sender.Image = Kaarten(sender.Name).Value
-        GekliktePicBox.Add(sender)
-        AfbTeZien.Add(sender.Image)
+            sender.Image = Kaarten(sender.Name).Value
+            GekliktePicBox.Add(sender)
+            AfbTeZien.Add(sender.Image)
         End If
+
     End Sub
 
     Function AfbeeldingenVergelijken(ByVal image1 As Image, ByVal image2 As Image, ByVal punten As Byte) As Boolean
@@ -225,10 +230,14 @@
     End Sub
 
     Private Sub TijdAfbTonenGelijk_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAfbTonenGelijk.Tick
-        ' De afbeeldingen een achtergrondkleur geven ter bevestiging dat de 2 afbeeldingen gelijk zijn      Als de afbeeldingen gelijk zijn
+        ' De afbeeldingen verwijderen ter bevestiging dat de 2 afbeeldingen gelijk zijn      Als de afbeeldingen gelijk zijn
         TijdAfbTonenGelijk.Stop()
-        GekliktePicBox(0).BackColor = Color.Aquamarine
-        GekliktePicBox(1).BackColor = Color.Aquamarine
+        GekliktePicBox(0).BackgroundImage = My.Resources.Achtergrond
+        GekliktePicBox(0).Image = My.Resources.Achtergrond
+        GekliktePicBox(0).BorderStyle = BorderStyle.None
+        GekliktePicBox(1).BackgroundImage = My.Resources.Achtergrond
+        GekliktePicBox(1).Image = My.Resources.Achtergrond
+        GekliktePicBox(1).BorderStyle = BorderStyle.None
         Juiste += 1
         lblAantalParen.Text = Juiste
 

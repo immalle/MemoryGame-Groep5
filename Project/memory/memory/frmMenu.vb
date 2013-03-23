@@ -7,7 +7,9 @@
 
     Private Sub frmMenu_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-        Me.BackgroundImage = My.Resources.AchtergrondMenu
+        Me.BackgroundImage = My.Resources.Achtergrond
+
+        Me.BackgroundImage = My.Resources.Achtergrond
         PATH = Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\Afbeeldingen"
 
         picBoxPlay.Image = My.Resources.PlayStandaard
@@ -34,7 +36,7 @@
     End Sub
 
     Private Sub picBoxPlay_Click(sender As System.Object, e As System.EventArgs) Handles picBoxPlay.Click
-        frmSpel.Show()
+        frmLoadLevel.Show()
         Me.Hide()
     End Sub
     '------------------------------------------------
