@@ -235,6 +235,7 @@
         ' Als alle paren gevonden zijn, vragen of ze naar het menu willen terugkeren of gewoon stoppen
         If Juiste = AantalNodigeJuiste Then
             TijdBezig.Stop()
+            My.Computer.Audio.Play(Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\applaus.wav")
             MessageBox.Show("U heeft gewonnen." & vbCrLf & "U scoorde " & Score & " punten in " & lblTijdbezig.Text.Remove(0, 5), "Proficiat!", MessageBoxButtons.OK)
 
             If MessageBox.Show("Wilt u terug naar het hoofdmenu", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then

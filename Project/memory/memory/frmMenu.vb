@@ -6,6 +6,7 @@
     Dim HardChecked As Boolean = False
 
     Private Sub frmMenu_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackgroundImage = My.Resources.AchtergrondMenu
         PATH = Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\Afbeeldingen"
 
