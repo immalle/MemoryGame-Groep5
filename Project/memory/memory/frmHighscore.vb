@@ -2,49 +2,33 @@
 Imports System.Data.SqlClient
 
 Public Class frmHighscore
-    'Dim NaamTest As String = "ToonTest"
-    'Dim ScoreTest As Integer = 200
-    'Dim GraadTest As String = "Moeilijk"
+    Dim NaamTest As String = "ToonTest"
+    Dim ScoreTest As Integer = 200
+    Dim GraadTest As String = "Moeilijk"
 
-    Private Sub frmHighscore_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        'Dim conn As New SqlConnection
-        'conn.ConnectionString = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\Visual Studio 2010\Database\SQL\LoginClient\LoginClient.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
-        'Dim da As New SqlDataAdapter
-        'Dim ds As New DataSet
-        'conn.Open()
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        Dim conn As SqlConnection = Nothing
+        Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\Program Files Alg\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Scores.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+        Dim da As SqlDataAdapter = Nothing
+        Dim id As Integer
+        Dim ds As DataSet = Nothing
+        conn = New SqlConnection(connString)
+        da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
+        conn.Open()
+        ds = New DataSet()
+        da.FillSchema(ds, SchemaType.Source, "tblScores")
+        Dim table As DataTable = ds.Tables("tblScores")
+        Dim newRecord As DataRow = table.NewRow()
+        id = ds.Tables("tblScores").Rows.Count
+        newRecord("id") = id + 1
+        newRecord("Naam") = NaamTest
+        newRecord("Score") = ScoreTest
+        newRecord("Moeilijkheidsgraad") = GraadTest
+        table.Rows.Add(newRecord)
+        Dim command As New SqlCommandBuilder(da)
+        da.Update(ds, "tblScores")
 
-        'da.Fill(ds, "tblUsers")
-        'Dim table As DataTable = ds.Tables("tblUsers")
-        'Dim row As DataRow
-        'row(0) = NaamTest
-        'row(1) = GraadTest
-        'table.Rows.Add(row)
-        'da.Update(ds, "tblUsers")
-        'conn.Close()
+        ds.Dispose()
+        conn.Close()
     End Sub
-
-
-
-
-    'Dim connectionString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\Program Files Alg\GitHub\MemoryGame-Groep5\Project\memory\memory\Scores.mdf"";Integrated Security=True;User Instance=True"
-    'Dim connection As SqlConnection = Nothing
-    'Dim adapter As SqlDataAdapter = Nothing
-    'Dim ds As New DataSet()
-
-    '    connection = New SqlConnection(connectionString)
-
-    '    connection.Open()
-    '    adapter.FillSchema(ds, SchemaType.Source, "tblScores")
-    'Dim table As DataTable = ds.Tables("tblScores")
-    'Dim newRecord As DataRow = table.NewRow()
-    '    newRecord(0) = 1
-    '    newRecord(1) = NaamTest
-    '    newRecord(2) = GraadTest
-    '    newRecord(3) = ScoreTest
-    '    table.Rows.Add(newRecord)
-
-    'Dim command As New SqlCommandBuilder(adapter)
-    '    adapter.Update(ds, "tblScores")
-    '    ds.Dispose()
-    '    connection.Close()
 End Class

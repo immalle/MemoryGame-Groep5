@@ -16,7 +16,8 @@
     End Sub
 
     Private Sub frmLoadLevel_Shown(sender As System.Object, e As System.EventArgs) Handles MyBase.Shown
-        Threading.Thread.Sleep(5000)
+
+        Threading.Thread.Sleep(2000)
         frmSpel.Show()
     End Sub
 End Class
