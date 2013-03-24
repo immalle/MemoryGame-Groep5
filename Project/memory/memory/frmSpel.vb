@@ -1,4 +1,8 @@
-﻿Public Class frmSpel
+﻿Imports System
+Imports System.Data
+Imports System.Data.SqlClient
+
+Public Class frmSpel
     Dim Score As Integer = 0
     Dim Juiste As Integer
     ' Variabelen voor tijd
@@ -245,19 +249,42 @@
         If Juiste = AantalNodigeJuiste Then
             TijdBezig.Stop()
             My.Computer.Audio.Play(Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\applaus.wav")
-            MessageBox.Show("U heeft gewonnen." & vbCrLf & "U scoorde " & Score & " punten in " & lblTijdbezig.Text.Remove(0, 5), "Proficiat!", MessageBoxButtons.OK)
-
-            If MessageBox.Show("Wilt u terug naar het hoofdmenu", "", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-                frmMenu.Show()
-                Me.Close()
-            Else
-                Me.Close()
-                frmMenu.Close()
-            End If
+            MessageBox.Show("U heeft gewonnen." & vbCrLf & "U scoorde " & Score & " punten in " & lblTijdbezig.Text.Remove(0, 5) & vbCrLf & "Moeilijkheidsgraad: " & frmMenu.MOEILIJKHEIDSGRAAD.ToString, "Proficiat!", MessageBoxButtons.OK)
+            ScoreOpslaan()
+            Me.Close()
         End If
         GekliktePicBox.Clear()
     End Sub
 
+    Sub ScoreOpslaan()
+        Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
+        Dim conn As SqlConnection = Nothing
+        Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\Program Files Alg\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Scores.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+        Dim da As SqlDataAdapter = Nothing
+        Dim id As Integer
+        Dim ds As DataSet = Nothing
+        conn = New SqlConnection(connString)
+        da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
+        conn.Open()
+        ds = New DataSet()
+        da.Fill(ds, "tblScores")
+        Dim table As DataTable = ds.Tables("tblScores")
+        Dim newRecord As DataRow = table.NewRow()
+        id = ds.Tables("tblScores").Rows.Count
+        newRecord("id") = id + 1
+        newRecord("Naam") = nickname
+        newRecord("Score") = Score
+        newRecord("Moeilijkheidsgraad") = frmMenu.MOEILIJKHEIDSGRAAD.ToString
+        table.Rows.Add(newRecord)
+        Dim command As New SqlCommandBuilder(da)
+        da.Update(ds, "tblScores")
+
+        ds.Dispose()
+        conn.Close()
+        If MessageBox.Show("Uw score is opgeslagen. Wilt u de highscores bekijken?", "Highscore", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            frmHighscore.Show()
+        End If
+    End Sub
     Private Sub btnMenu_Click(sender As System.Object, e As System.EventArgs) Handles btnMenu.Click
         ' Het spel stoppen en naar het menu gaan
         Me.Close()

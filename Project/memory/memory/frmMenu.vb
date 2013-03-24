@@ -58,6 +58,7 @@
     ' PictureBox  HIGHSCORE ------------------------------
     Private Sub picBoxHighscore_Click(sender As System.Object, e As System.EventArgs) Handles picBoxHighscore.Click
         frmHighscore.Show()
+        Me.Hide()
     End Sub
 
     Private Sub picBoxHighscore_MouseEnter(sender As PictureBox, e As System.EventArgs) Handles picBoxHighscore.MouseEnter
