@@ -16,7 +16,7 @@ Public Class frmHighscore
         da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
         conn.Open()
         ds = New DataSet()
-        da.FillSchema(ds, SchemaType.Source, "tblScores")
+        da.Fill(ds, "tblScores")
         Dim table As DataTable = ds.Tables("tblScores")
         Dim newRecord As DataRow = table.NewRow()
         id = ds.Tables("tblScores").Rows.Count
