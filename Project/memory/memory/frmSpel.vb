@@ -93,32 +93,37 @@ Public Class frmSpel
                 Me.Width = 1350
                 Me.Height = 900
         End Select
-        Me.Location = New Point(100, 50)
+        Me.Location = New Point(10, 10)
         btnMenu.Location = New Point(tussenPlaats, tussenPlaats)
 
         lblTweeAfbeeldingen.Location = New Point(btnMenu.Location.X, btnMenu.Width + (tussenPlaats * 2))
         lblTweeAfbeeldingen.AutoSize = False
         lblTweeAfbeeldingen.Width = btnMenu.Width
+        lblTweeAfbeeldingen.Image = My.Resources.Achtergrond
 
         lblAantalParen.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 2) + (tussenPlaats * 3))
         lblAantalParen.AutoSize = False
         lblAantalParen.Width = btnMenu.Width / 2
         lblAantalParen.Text = Juiste
+        lblAantalParen.Image = My.Resources.Achtergrond
 
         lblNodigeParen.Location = New Point(btnMenu.Location.X + tussenPlaats, (btnMenu.Width * 2) + (tussenPlaats * 3))
         lblNodigeParen.AutoSize = False
         lblNodigeParen.Width = btnMenu.Width / 2
         lblNodigeParen.Text = "/ " & AantalNodigeJuiste
+        lblNodigeParen.Image = My.Resources.Achtergrond
 
         lblTijdbezig.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 3) + (tussenPlaats * 4))
         lblTijdbezig.AutoSize = False
         lblTijdbezig.Width = btnMenu.Width
         lblTijdbezig.Text = "Tijd: 0 : 0"
+        lblTijdbezig.Image = My.Resources.Achtergrond
 
         lblScore.Location = New Point(btnMenu.Location.X, (btnMenu.Width * 4) + (tussenPlaats * 5))
         lblScore.AutoSize = False
         lblScore.Width = btnMenu.Width + 100
         lblScore.Text = "Score: " & Score
+        lblScore.Image = My.Resources.Achtergrond
     End Sub
 
     Public Sub MaakVeld(ByVal aantalRij As Integer, ByVal aantalKolom As Integer)
@@ -257,9 +262,15 @@ Public Class frmSpel
     End Sub
 
     Sub ScoreOpslaan()
+
+        OpslaanSchool()
+
+    End Sub
+
+    Sub OpslaanSchool()
         Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
         Dim conn As SqlConnection = Nothing
-        Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\Program Files Alg\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Scores.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+        Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\ScoresSchool.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
         Dim da As SqlDataAdapter = Nothing
         Dim id As Integer
         Dim ds As DataSet = Nothing
@@ -285,6 +296,37 @@ Public Class frmSpel
             frmHighscore.Show()
         End If
     End Sub
+
+    Sub OpslaanThuis()
+        Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
+        Dim conn As SqlConnection = Nothing
+        Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Scores.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+        Dim da As SqlDataAdapter = Nothing
+        Dim id As Integer
+        Dim ds As DataSet = Nothing
+        conn = New SqlConnection(connString)
+        da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
+        conn.Open()
+        ds = New DataSet()
+        da.Fill(ds, "tblScores")
+        Dim table As DataTable = ds.Tables("tblScores")
+        Dim newRecord As DataRow = table.NewRow()
+        id = ds.Tables("tblScores").Rows.Count
+        newRecord("id") = id + 1
+        newRecord("Naam") = nickname
+        newRecord("Score") = Score
+        newRecord("Moeilijkheidsgraad") = frmMenu.MOEILIJKHEIDSGRAAD.ToString
+        table.Rows.Add(newRecord)
+        Dim command As New SqlCommandBuilder(da)
+        da.Update(ds, "tblScores")
+
+        ds.Dispose()
+        conn.Close()
+        If MessageBox.Show("Uw score is opgeslagen. Wilt u de highscores bekijken?", "Highscore", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            frmHighscore.Show()
+        End If
+    End Sub
+
     Private Sub btnMenu_Click(sender As System.Object, e As System.EventArgs) Handles btnMenu.Click
         ' Het spel stoppen en naar het menu gaan
         Me.Close()

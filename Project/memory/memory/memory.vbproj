@@ -636,6 +636,15 @@
     <None Include="Resources\Checked.png" />
     <None Include="Resources\AchterkantKaart.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scores.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Scores_log.ldf">
+      <DependentUpon>Scores.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

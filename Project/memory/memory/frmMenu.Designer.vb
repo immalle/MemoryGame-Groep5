@@ -44,93 +44,99 @@ Partial Class frmMenu
         '
         'picBoxNormalCheck
         '
-        Me.picBoxNormalCheck.Location = New System.Drawing.Point(129, 162)
-        Me.picBoxNormalCheck.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.picBoxNormalCheck.Location = New System.Drawing.Point(97, 132)
+        Me.picBoxNormalCheck.Margin = New System.Windows.Forms.Padding(2)
         Me.picBoxNormalCheck.Name = "picBoxNormalCheck"
-        Me.picBoxNormalCheck.Size = New System.Drawing.Size(60, 60)
+        Me.picBoxNormalCheck.Size = New System.Drawing.Size(45, 49)
+        Me.picBoxNormalCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picBoxNormalCheck.TabIndex = 12
         Me.picBoxNormalCheck.TabStop = False
         '
         'picBoxHardCheck
         '
-        Me.picBoxHardCheck.Location = New System.Drawing.Point(129, 228)
-        Me.picBoxHardCheck.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.picBoxHardCheck.Location = New System.Drawing.Point(97, 185)
+        Me.picBoxHardCheck.Margin = New System.Windows.Forms.Padding(2)
         Me.picBoxHardCheck.Name = "picBoxHardCheck"
-        Me.picBoxHardCheck.Size = New System.Drawing.Size(60, 60)
+        Me.picBoxHardCheck.Size = New System.Drawing.Size(45, 49)
+        Me.picBoxHardCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picBoxHardCheck.TabIndex = 11
         Me.picBoxHardCheck.TabStop = False
         '
         'picBoxEasyCheck
         '
-        Me.picBoxEasyCheck.Location = New System.Drawing.Point(129, 96)
-        Me.picBoxEasyCheck.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.picBoxEasyCheck.Location = New System.Drawing.Point(97, 78)
+        Me.picBoxEasyCheck.Margin = New System.Windows.Forms.Padding(2)
         Me.picBoxEasyCheck.Name = "picBoxEasyCheck"
-        Me.picBoxEasyCheck.Size = New System.Drawing.Size(60, 60)
+        Me.picBoxEasyCheck.Size = New System.Drawing.Size(45, 49)
+        Me.picBoxEasyCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picBoxEasyCheck.TabIndex = 10
         Me.picBoxEasyCheck.TabStop = False
         '
         'picBoxHard
         '
-        Me.picBoxHard.Location = New System.Drawing.Point(195, 228)
-        Me.picBoxHard.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.picBoxHard.Location = New System.Drawing.Point(146, 185)
+        Me.picBoxHard.Margin = New System.Windows.Forms.Padding(2)
         Me.picBoxHard.Name = "picBoxHard"
-        Me.picBoxHard.Size = New System.Drawing.Size(149, 60)
+        Me.picBoxHard.Size = New System.Drawing.Size(112, 49)
+        Me.picBoxHard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.picBoxHard.TabIndex = 9
         Me.picBoxHard.TabStop = False
         '
         'picBoxNormal
         '
-        Me.picBoxNormal.Location = New System.Drawing.Point(195, 162)
-        Me.picBoxNormal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.picBoxNormal.Location = New System.Drawing.Point(146, 132)
+        Me.picBoxNormal.Margin = New System.Windows.Forms.Padding(2)
         Me.picBoxNormal.Name = "picBoxNormal"
-        Me.picBoxNormal.Size = New System.Drawing.Size(149, 60)
+        Me.picBoxNormal.Size = New System.Drawing.Size(112, 49)
+        Me.picBoxNormal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.picBoxNormal.TabIndex = 8
         Me.picBoxNormal.TabStop = False
         '
         'picBoxEasy
         '
-        Me.picBoxEasy.Location = New System.Drawing.Point(195, 96)
-        Me.picBoxEasy.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.picBoxEasy.Location = New System.Drawing.Point(146, 78)
+        Me.picBoxEasy.Margin = New System.Windows.Forms.Padding(2)
         Me.picBoxEasy.Name = "picBoxEasy"
-        Me.picBoxEasy.Size = New System.Drawing.Size(149, 60)
+        Me.picBoxEasy.Size = New System.Drawing.Size(112, 49)
+        Me.picBoxEasy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.picBoxEasy.TabIndex = 7
         Me.picBoxEasy.TabStop = False
         '
         'picBoxHighscore
         '
-        Me.picBoxHighscore.Location = New System.Drawing.Point(171, 402)
-        Me.picBoxHighscore.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.picBoxHighscore.Location = New System.Drawing.Point(128, 327)
+        Me.picBoxHighscore.Margin = New System.Windows.Forms.Padding(2)
         Me.picBoxHighscore.Name = "picBoxHighscore"
-        Me.picBoxHighscore.Size = New System.Drawing.Size(153, 58)
+        Me.picBoxHighscore.Size = New System.Drawing.Size(115, 47)
         Me.picBoxHighscore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picBoxHighscore.TabIndex = 6
         Me.picBoxHighscore.TabStop = False
         '
         'PicBoxQuit
         '
-        Me.PicBoxQuit.Location = New System.Drawing.Point(12, 402)
-        Me.PicBoxQuit.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PicBoxQuit.Location = New System.Drawing.Point(9, 327)
+        Me.PicBoxQuit.Margin = New System.Windows.Forms.Padding(2)
         Me.PicBoxQuit.Name = "PicBoxQuit"
-        Me.PicBoxQuit.Size = New System.Drawing.Size(153, 58)
+        Me.PicBoxQuit.Size = New System.Drawing.Size(115, 47)
         Me.PicBoxQuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PicBoxQuit.TabIndex = 5
         Me.PicBoxQuit.TabStop = False
         '
         'picBoxPlay
         '
-        Me.picBoxPlay.Location = New System.Drawing.Point(331, 402)
-        Me.picBoxPlay.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.picBoxPlay.Location = New System.Drawing.Point(248, 327)
+        Me.picBoxPlay.Margin = New System.Windows.Forms.Padding(2)
         Me.picBoxPlay.Name = "picBoxPlay"
-        Me.picBoxPlay.Size = New System.Drawing.Size(153, 58)
+        Me.picBoxPlay.Size = New System.Drawing.Size(115, 47)
         Me.picBoxPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picBoxPlay.TabIndex = 4
         Me.picBoxPlay.TabStop = False
         '
         'frmMenu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(493, 473)
+        Me.ClientSize = New System.Drawing.Size(370, 384)
         Me.ControlBox = False
         Me.Controls.Add(Me.picBoxNormalCheck)
         Me.Controls.Add(Me.picBoxHardCheck)
@@ -141,7 +147,7 @@ Partial Class frmMenu
         Me.Controls.Add(Me.picBoxHighscore)
         Me.Controls.Add(Me.PicBoxQuit)
         Me.Controls.Add(Me.picBoxPlay)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmMenu"
@@ -160,6 +166,7 @@ Partial Class frmMenu
         CType(Me.PicBoxQuit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picBoxPlay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents picBoxPlay As System.Windows.Forms.PictureBox

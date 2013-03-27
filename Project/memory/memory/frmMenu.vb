@@ -155,4 +155,49 @@
     End Sub
     ' --------------------------------------------------------
 
+    Private Sub picBoxPlay_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxPlay.MouseLeave
+
+    End Sub
+    Private Sub picBoxPlay_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxPlay.MouseEnter
+
+    End Sub
+    Private Sub PicBoxQuit_MouseLeave(sender As System.Object, e As System.EventArgs) Handles PicBoxQuit.MouseLeave
+
+    End Sub
+    Private Sub PicBoxQuit_MouseEnter(sender As System.Object, e As System.EventArgs) Handles PicBoxQuit.MouseEnter
+
+    End Sub
+    Private Sub picBoxHighscore_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxHighscore.MouseLeave
+
+    End Sub
+    Private Sub picBoxHighscore_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxHighscore.MouseEnter
+
+    End Sub
+    Private Sub picBoxEasyCheck_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxEasyCheck.MouseLeave
+
+    End Sub
+    Private Sub picBoxEasyCheck_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxEasyCheck.MouseEnter
+
+    End Sub
+    Private Sub picBoxEasyCheck_Click(sender As System.Object, e As System.EventArgs) Handles picBoxEasyCheck.Click
+
+    End Sub
+    Private Sub picBoxHardCheck_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxHardCheck.MouseLeave
+
+    End Sub
+    Private Sub picBoxHardCheck_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxHardCheck.MouseEnter
+
+    End Sub
+    Private Sub picBoxHardCheck_Click(sender As System.Object, e As System.EventArgs) Handles picBoxHardCheck.Click
+
+    End Sub
+    Private Sub picBoxNormalCheck_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxNormalCheck.MouseLeave
+
+    End Sub
+    Private Sub picBoxNormalCheck_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxNormalCheck.MouseEnter
+
+    End Sub
+    Private Sub picBoxNormalCheck_Click(sender As System.Object, e As System.EventArgs) Handles picBoxNormalCheck.Click
+
+    End Sub
 End Class

@@ -16,8 +16,9 @@
     End Sub
 
     Private Sub frmLoadLevel_Shown(sender As System.Object, e As System.EventArgs) Handles MyBase.Shown
-
+        Me.Enabled = False
         Threading.Thread.Sleep(2000)
         frmSpel.Show()
+        frmSpel.Enabled = True
     End Sub
 End Class
