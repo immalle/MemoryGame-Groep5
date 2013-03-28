@@ -248,8 +248,10 @@ Public Class frmSpel
         GekliktePicBox(1).Image = My.Resources.Achtergrond
         GekliktePicBox(1).BorderStyle = BorderStyle.None
         Juiste += 1
+        GekliktePicBox(0).Enabled = False
+        GekliktePicBox(1).Enabled = False
         lblAantalParen.Text = Juiste
-
+       
         ' Als alle paren gevonden zijn, vragen of ze naar het menu willen terugkeren of gewoon stoppen
         If Juiste = AantalNodigeJuiste Then
             TijdBezig.Stop()
