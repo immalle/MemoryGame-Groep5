@@ -232,6 +232,7 @@ Public Class frmSpel
 
     Private Sub TijdAfbTonenNietGelijk_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAfbTonenNietGelijk.Tick
         ' De afbeeldingen voor x seconden tonen en dan weer de achterkant laten zien   Als de afbeeldingen niet gelijk zijn
+
         TijdAfbTonenNietGelijk.Stop()
         GekliktePicBox(0).Image = My.Resources.achterkant
         GekliktePicBox(1).Image = My.Resources.achterkant
@@ -265,13 +266,13 @@ Public Class frmSpel
 
     Sub ScoreOpslaan()
         Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
-        Dim bestandpad As String = "D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Highscores.txt"
+        Dim bestandpad As String = frmMenu.PATH & "\Highscores.txt"
         Dim bestaandeTekst As String
         Dim reader As New System.IO.StreamReader(bestandpad)
         bestaandeTekst = reader.ReadToEnd
         reader.Close()
         Dim writer As New System.IO.StreamWriter(bestandpad)
-        writer.Write(bestaandeTekst & nickname & ": " & Score & " op " & frmMenu.MOEILIJKHEIDSGRAAD.ToString & vbCrLf)
+        writer.Write(bestaandeTekst & nickname & ": " & Score & " op " & frmMenu.MOEILIJKHEIDSGRAAD.ToString & " in " & TijdBezigMin & ":" & TijdBezigSec & " min." & vbCrLf)
         writer.Close()
         MessageBox.Show("Uw score is succesvol opgeslagen!")
         Me.Close()

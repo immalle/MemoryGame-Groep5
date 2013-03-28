@@ -12,7 +12,7 @@ Public Class frmHighscore
     End Sub
 
     Sub LaadScores()
-        Dim bestandpad As String = "D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Highscores.txt"
+        Dim bestandpad As String = frmMenu.PATH & "\Highscores.txt"
         Dim reader As New System.IO.StreamReader(bestandpad)
         rtxtScores.Text = reader.ReadToEnd
         reader.Close()
