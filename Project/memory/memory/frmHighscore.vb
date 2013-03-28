@@ -7,6 +7,10 @@ Public Class frmHighscore
         Me.ControlBox = False
 
         LaadScores()
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+        Me.BackgroundImage = My.Resources.Achtergrond
+
+
 
 
     End Sub
