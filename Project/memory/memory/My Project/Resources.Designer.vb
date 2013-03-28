@@ -123,6 +123,15 @@ Namespace My.Resources
             End Get
         End Property
         
+        '''<summary>
+        '''  Looks up a localized string similar to .
+        '''</summary>
+        Friend ReadOnly Property Highscores() As String
+            Get
+                Return ResourceManager.GetString("Highscores", resourceCulture)
+            End Get
+        End Property
+        
         Friend ReadOnly Property HighscoreStandaard() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("HighscoreStandaard", resourceCulture)

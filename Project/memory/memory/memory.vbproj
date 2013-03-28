@@ -640,6 +640,7 @@
     <None Include="Resources\Scores.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\Highscores.txt" />
     <Content Include="Resources\Scores_log.ldf">
       <DependentUpon>Scores.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

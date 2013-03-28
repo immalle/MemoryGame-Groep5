@@ -1,6 +1,6 @@
-﻿Imports System
-Imports System.Data
-Imports System.Data.SqlClient
+﻿'Imports System
+'Imports System.Data
+'Imports System.Data.SqlClient
 
 Public Class frmSpel
     Dim Score As Integer = 0
@@ -264,70 +264,79 @@ Public Class frmSpel
     End Sub
 
     Sub ScoreOpslaan()
-
-        OpslaanSchool()
-
-    End Sub
-
-    Sub OpslaanSchool()
         Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
-        Dim conn As SqlConnection = Nothing
-        Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\ScoresSchool.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
-        Dim da As SqlDataAdapter = Nothing
-        Dim id As Integer
-        Dim ds As DataSet = Nothing
-        conn = New SqlConnection(connString)
-        da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
-        conn.Open()
-        ds = New DataSet()
-        da.Fill(ds, "tblScores")
-        Dim table As DataTable = ds.Tables("tblScores")
-        Dim newRecord As DataRow = table.NewRow()
-        id = ds.Tables("tblScores").Rows.Count
-        newRecord("id") = id + 1
-        newRecord("Naam") = nickname
-        newRecord("Score") = Score
-        newRecord("Moeilijkheidsgraad") = frmMenu.MOEILIJKHEIDSGRAAD.ToString
-        table.Rows.Add(newRecord)
-        Dim command As New SqlCommandBuilder(da)
-        da.Update(ds, "tblScores")
-
-        ds.Dispose()
-        conn.Close()
-        If MessageBox.Show("Uw score is opgeslagen. Wilt u de highscores bekijken?", "Highscore", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-            frmHighscore.Show()
-        End If
+        Dim bestandpad As String = "D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Highscores.txt"
+        Dim bestaandeTekst As String
+        Dim reader As New System.IO.StreamReader(bestandpad)
+        bestaandeTekst = reader.ReadToEnd
+        reader.Close()
+        Dim writer As New System.IO.StreamWriter(bestandpad)
+        writer.Write(bestaandeTekst & nickname & ": " & Score & " op " & frmMenu.MOEILIJKHEIDSGRAAD.ToString & vbCrLf)
+        writer.Close()
+        MessageBox.Show("Uw score is succesvol opgeslagen!")
+        Me.Close()
+        frmMenu.Show()
     End Sub
 
-    Sub OpslaanThuis()
-        Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
-        Dim conn As SqlConnection = Nothing
-        Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Scores.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
-        Dim da As SqlDataAdapter = Nothing
-        Dim id As Integer
-        Dim ds As DataSet = Nothing
-        conn = New SqlConnection(connString)
-        da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
-        conn.Open()
-        ds = New DataSet()
-        da.Fill(ds, "tblScores")
-        Dim table As DataTable = ds.Tables("tblScores")
-        Dim newRecord As DataRow = table.NewRow()
-        id = ds.Tables("tblScores").Rows.Count
-        newRecord("id") = id + 1
-        newRecord("Naam") = nickname
-        newRecord("Score") = Score
-        newRecord("Moeilijkheidsgraad") = frmMenu.MOEILIJKHEIDSGRAAD.ToString
-        table.Rows.Add(newRecord)
-        Dim command As New SqlCommandBuilder(da)
-        da.Update(ds, "tblScores")
+    'Sub OpslaanSchool()
+    '    Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
+    '    Dim conn As SqlConnection = Nothing
+    '    Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\ScoresSchool.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+    '    Dim da As SqlDataAdapter = Nothing
+    '    Dim id As Integer
+    '    Dim ds As DataSet = Nothing
+    '    conn = New SqlConnection(connString)
+    '    da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
+    '    conn.Open()
+    '    ds = New DataSet()
+    '    da.Fill(ds, "tblScores")
+    '    Dim table As DataTable = ds.Tables("tblScores")
+    '    Dim newRecord As DataRow = table.NewRow()
+    '    id = ds.Tables("tblScores").Rows.Count
+    '    newRecord("id") = id + 1
+    '    newRecord("Naam") = nickname
+    '    newRecord("Score") = Score
+    '    newRecord("Moeilijkheidsgraad") = frmMenu.MOEILIJKHEIDSGRAAD.ToString
+    '    table.Rows.Add(newRecord)
+    '    Dim command As New SqlCommandBuilder(da)
+    '    da.Update(ds, "tblScores")
 
-        ds.Dispose()
-        conn.Close()
-        If MessageBox.Show("Uw score is opgeslagen. Wilt u de highscores bekijken?", "Highscore", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-            frmHighscore.Show()
-        End If
-    End Sub
+    '    ds.Dispose()
+    '    conn.Close()
+    '    If MessageBox.Show("Uw score is opgeslagen. Wilt u de highscores bekijken?", "Highscore", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+    '        frmHighscore.Show()
+    '    End If
+    'End Sub
+
+    'Sub OpslaanThuis()
+    '    Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
+    '    Dim conn As SqlConnection = Nothing
+    '    Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Scores.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+    '    Dim da As SqlDataAdapter = Nothing
+    '    Dim id As Integer
+    '    Dim ds As DataSet = Nothing
+    '    conn = New SqlConnection(connString)
+    '    da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
+    '    conn.Open()
+    '    ds = New DataSet()
+    '    da.Fill(ds, "tblScores")
+    '    Dim table As DataTable = ds.Tables("tblScores")
+    '    Dim newRecord As DataRow = table.NewRow()
+    '    id = ds.Tables("tblScores").Rows.Count
+    '    newRecord("id") = id + 1
+    '    newRecord("Naam") = nickname
+    '    newRecord("Score") = Score
+    '    newRecord("Moeilijkheidsgraad") = frmMenu.MOEILIJKHEIDSGRAAD.ToString
+    '    table.Rows.Add(newRecord)
+    '    Dim command As New SqlCommandBuilder(da)
+    '    da.Update(ds, "tblScores")
+
+    '    ds.Dispose()
+    '    conn.Close()
+    '    If MessageBox.Show("Uw score is opgeslagen. Wilt u de highscores bekijken?", "Highscore", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+    '        frmHighscore.Show()
+    '    End If
+    'End Sub
 
     Private Sub btnMenu_Click(sender As System.Object, e As System.EventArgs) Handles btnMenu.Click
         ' Het spel stoppen en naar het menu gaan

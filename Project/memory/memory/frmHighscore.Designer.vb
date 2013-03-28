@@ -23,45 +23,40 @@ Partial Class frmHighscore
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.btnMenu = New System.Windows.Forms.Button()
-        Me.dgvScores = New System.Windows.Forms.DataGridView()
-        CType(Me.dgvScores, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.rtxtScores = New System.Windows.Forms.RichTextBox()
         Me.SuspendLayout()
         '
         'btnMenu
         '
-        Me.btnMenu.Location = New System.Drawing.Point(12, 394)
+        Me.btnMenu.Location = New System.Drawing.Point(9, 320)
+        Me.btnMenu.Margin = New System.Windows.Forms.Padding(2)
         Me.btnMenu.Name = "btnMenu"
-        Me.btnMenu.Size = New System.Drawing.Size(629, 43)
+        Me.btnMenu.Size = New System.Drawing.Size(472, 35)
         Me.btnMenu.TabIndex = 4
         Me.btnMenu.Text = "Menu"
         Me.btnMenu.UseVisualStyleBackColor = True
         '
-        'dgvScores
+        'rtxtScores
         '
-        Me.dgvScores.AllowUserToAddRows = False
-        Me.dgvScores.AllowUserToDeleteRows = False
-        Me.dgvScores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvScores.Location = New System.Drawing.Point(12, 12)
-        Me.dgvScores.Name = "dgvScores"
-        Me.dgvScores.ReadOnly = True
-        Me.dgvScores.RowTemplate.Height = 24
-        Me.dgvScores.Size = New System.Drawing.Size(629, 376)
-        Me.dgvScores.TabIndex = 5
+        Me.rtxtScores.Enabled = False
+        Me.rtxtScores.Location = New System.Drawing.Point(12, 12)
+        Me.rtxtScores.Name = "rtxtScores"
+        Me.rtxtScores.Size = New System.Drawing.Size(466, 303)
+        Me.rtxtScores.TabIndex = 5
+        Me.rtxtScores.Text = ""
         '
         'frmHighscore
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(653, 449)
-        Me.Controls.Add(Me.dgvScores)
+        Me.ClientSize = New System.Drawing.Size(490, 365)
+        Me.Controls.Add(Me.rtxtScores)
         Me.Controls.Add(Me.btnMenu)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmHighscore"
         Me.Text = "Highscore!"
-        CType(Me.dgvScores, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents btnMenu As System.Windows.Forms.Button
-    Friend WithEvents dgvScores As System.Windows.Forms.DataGridView
+    Friend WithEvents rtxtScores As System.Windows.Forms.RichTextBox
 End Class

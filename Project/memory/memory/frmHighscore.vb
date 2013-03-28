@@ -12,7 +12,10 @@ Public Class frmHighscore
     End Sub
 
     Sub LaadScores()
-
+        Dim bestandpad As String = "D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Highscores.txt"
+        Dim reader As New System.IO.StreamReader(bestandpad)
+        rtxtScores.Text = reader.ReadToEnd
+        reader.Close()
     End Sub
 
     Private Sub btnMenu_Click(sender As System.Object, e As System.EventArgs) Handles btnMenu.Click
