@@ -20,5 +20,6 @@
         Threading.Thread.Sleep(2000)
         frmSpel.Show()
         frmSpel.Enabled = True
+        frmSpel.Focus()
     End Sub
 End Class

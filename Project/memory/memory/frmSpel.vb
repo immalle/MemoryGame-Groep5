@@ -1,8 +1,4 @@
-﻿'Imports System
-'Imports System.Data
-'Imports System.Data.SqlClient
-
-Public Class frmSpel
+﻿Public Class frmSpel
     Dim Score As Integer = 0
     Dim Juiste As Integer
     ' Variabelen voor tijd
@@ -15,7 +11,9 @@ Public Class frmSpel
     Dim AfbTeZien As New List(Of Image)
     Dim GekliktePicBox As New List(Of PictureBox)
     Dim AlleAfbeeldingen As New List(Of Image)
-    Dim Paren As New List(Of Image) ' Alle paren opslagen en later tonen bij juiste paar zie sub Overzicht
+    Dim Start As Boolean = False
+    Dim TijdelijkPics As New List(Of PictureBox)
+
 
     Enum Graad  ' Enum voor de moeilijdsgraden
         Easy
@@ -49,7 +47,6 @@ Public Class frmSpel
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 4x4
         MaakVeld(4, 4)
-        frmLoadLevel.Close()
     End Sub
 
     Sub GraadNormaal()
@@ -140,19 +137,35 @@ Public Class frmSpel
                 picBox.AutoSize = False
                 picBox.Location = New Point(170 * j, 170 * i)
                 picBox.SizeMode = PictureBoxSizeMode.StretchImage
-                ' De afbeelding meegeven + opslaan en daarna de achterkant tonen v/d kaart
+                picBox.Enabled = False
+                ' De afbeelding meegeven + opslaan 
                 picBox.BackgroundImage = My.Resources.AchterkantKaart
-                Kaarten.Add(New KeyValuePair(Of Integer, Image)(picBox.Name, AfbeeldingInstellen(randomGetal)))
-                picBox.Image = My.Resources.achterkant
+                picBox.Image = AfbeeldingInstellen(randomGetal)
+                Kaarten.Add(New KeyValuePair(Of Integer, Image)(picBox.Name, picBox.Image))
                 picBox.BorderStyle = BorderStyle.FixedSingle
                 picBox.Visible = True
 
                 ' Handler meegeven
                 AddHandler picBox.MouseClick, AddressOf PictureBoxOnMouseClick
+                TijdelijkPics.Add(picBox)
                 Me.Controls.Add(picBox)
                 nr += 1
             Next
         Next
+    End Sub
+
+    Public Sub AfbeeldingenWeergevenVerbergen()
+        TijdAllesZien.Interval = 4000       ' De tijd die je krijgt om de afbeeldingen te zien voor het spel start
+        TijdAllesZien.Start()
+        While Start = False
+            lblTweeAfbeeldingen.Text = "Het spel begint zometeen."
+            Application.DoEvents()
+        End While
+        For Each picbox As PictureBox In TijdelijkPics
+            picbox.Image = My.Resources.achterkant
+            picbox.Enabled = True
+        Next
+        lblTweeAfbeeldingen.Text = "Start!"
     End Sub
 
     Sub VoegAfbeeldingenToe(aantalAfbeeldingen As Byte)
@@ -252,7 +265,7 @@ Public Class frmSpel
         GekliktePicBox(0).Enabled = False
         GekliktePicBox(1).Enabled = False
         lblAantalParen.Text = Juiste
-       
+
         ' Als alle paren gevonden zijn, vragen of ze naar het menu willen terugkeren of gewoon stoppen
         If Juiste = AantalNodigeJuiste Then
             TijdBezig.Stop()
@@ -272,72 +285,12 @@ Public Class frmSpel
         bestaandeTekst = reader.ReadToEnd
         reader.Close()
         Dim writer As New System.IO.StreamWriter(bestandpad)
-        writer.Write(bestaandeTekst & nickname & ": " & Score & " op " & frmMenu.MOEILIJKHEIDSGRAAD.ToString & " in " & TijdBezigMin & ":" & TijdBezigSec & " min." & vbCrLf)
+        writer.Write(nickname & ": " & Score & " op " & frmMenu.MOEILIJKHEIDSGRAAD.ToString & " in " & TijdBezigMin & ":" & TijdBezigSec & " min." & vbCrLf & bestaandeTekst)
         writer.Close()
         MessageBox.Show("Uw score is succesvol opgeslagen!")
         Me.Close()
         frmMenu.Show()
     End Sub
-
-    'Sub OpslaanSchool()
-    '    Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
-    '    Dim conn As SqlConnection = Nothing
-    '    Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\ScoresSchool.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
-    '    Dim da As SqlDataAdapter = Nothing
-    '    Dim id As Integer
-    '    Dim ds As DataSet = Nothing
-    '    conn = New SqlConnection(connString)
-    '    da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
-    '    conn.Open()
-    '    ds = New DataSet()
-    '    da.Fill(ds, "tblScores")
-    '    Dim table As DataTable = ds.Tables("tblScores")
-    '    Dim newRecord As DataRow = table.NewRow()
-    '    id = ds.Tables("tblScores").Rows.Count
-    '    newRecord("id") = id + 1
-    '    newRecord("Naam") = nickname
-    '    newRecord("Score") = Score
-    '    newRecord("Moeilijkheidsgraad") = frmMenu.MOEILIJKHEIDSGRAAD.ToString
-    '    table.Rows.Add(newRecord)
-    '    Dim command As New SqlCommandBuilder(da)
-    '    da.Update(ds, "tblScores")
-
-    '    ds.Dispose()
-    '    conn.Close()
-    '    If MessageBox.Show("Uw score is opgeslagen. Wilt u de highscores bekijken?", "Highscore", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-    '        frmHighscore.Show()
-    '    End If
-    'End Sub
-
-    'Sub OpslaanThuis()
-    '    Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
-    '    Dim conn As SqlConnection = Nothing
-    '    Dim connString As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""D:\5I\SO De Doncker Toon\GitHub\MemoryGame-Groep5\Project\memory\memory\Resources\Scores.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
-    '    Dim da As SqlDataAdapter = Nothing
-    '    Dim id As Integer
-    '    Dim ds As DataSet = Nothing
-    '    conn = New SqlConnection(connString)
-    '    da = New SqlDataAdapter("SELECT * FROM tblScores", conn)
-    '    conn.Open()
-    '    ds = New DataSet()
-    '    da.Fill(ds, "tblScores")
-    '    Dim table As DataTable = ds.Tables("tblScores")
-    '    Dim newRecord As DataRow = table.NewRow()
-    '    id = ds.Tables("tblScores").Rows.Count
-    '    newRecord("id") = id + 1
-    '    newRecord("Naam") = nickname
-    '    newRecord("Score") = Score
-    '    newRecord("Moeilijkheidsgraad") = frmMenu.MOEILIJKHEIDSGRAAD.ToString
-    '    table.Rows.Add(newRecord)
-    '    Dim command As New SqlCommandBuilder(da)
-    '    da.Update(ds, "tblScores")
-
-    '    ds.Dispose()
-    '    conn.Close()
-    '    If MessageBox.Show("Uw score is opgeslagen. Wilt u de highscores bekijken?", "Highscore", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-    '        frmHighscore.Show()
-    '    End If
-    'End Sub
 
     Private Sub btnMenu_Click(sender As System.Object, e As System.EventArgs) Handles btnMenu.Click
         ' Het spel stoppen en naar het menu gaan
@@ -353,4 +306,9 @@ Public Class frmSpel
         End If
         lblTijdbezig.Text = "Tijd: " & TijdBezigMin & " : " & TijdBezigSec
     End Sub
+
+    Private Sub TijdAllesZien_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAllesZien.Tick
+        Start = True
+    End Sub
+
 End Class
