@@ -6,10 +6,12 @@
     Dim HardChecked As Boolean = False
 
     Private Sub frmMenu_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        ' De opmaak van het menu
         Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         Me.BackgroundImage = My.Resources.Achtergrond
 
         Me.BackgroundImage = My.Resources.Achtergrond
+        ' Het automatisch path van de app die soms toch problemen geeft
         PATH = Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\Afbeeldingen"
 
         picBoxPlay.Image = My.Resources.PlayStandaard
@@ -157,49 +159,6 @@
     End Sub
     ' --------------------------------------------------------
 
-    Private Sub picBoxPlay_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxPlay.MouseLeave
-
-    End Sub
-    Private Sub picBoxPlay_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxPlay.MouseEnter
-
-    End Sub
-    Private Sub PicBoxQuit_MouseLeave(sender As System.Object, e As System.EventArgs) Handles PicBoxQuit.MouseLeave
-
-    End Sub
-    Private Sub PicBoxQuit_MouseEnter(sender As System.Object, e As System.EventArgs) Handles PicBoxQuit.MouseEnter
-
-    End Sub
-    Private Sub picBoxHighscore_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxHighscore.MouseLeave
-
-    End Sub
-    Private Sub picBoxHighscore_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxHighscore.MouseEnter
-
-    End Sub
-    Private Sub picBoxEasyCheck_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxEasyCheck.MouseLeave
-
-    End Sub
-    Private Sub picBoxEasyCheck_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxEasyCheck.MouseEnter
-
-    End Sub
-    Private Sub picBoxEasyCheck_Click(sender As System.Object, e As System.EventArgs) Handles picBoxEasyCheck.Click
-
-    End Sub
-    Private Sub picBoxHardCheck_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxHardCheck.MouseLeave
-
-    End Sub
-    Private Sub picBoxHardCheck_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxHardCheck.MouseEnter
-
-    End Sub
-    Private Sub picBoxHardCheck_Click(sender As System.Object, e As System.EventArgs) Handles picBoxHardCheck.Click
-
-    End Sub
-    Private Sub picBoxNormalCheck_MouseLeave(sender As System.Object, e As System.EventArgs) Handles picBoxNormalCheck.MouseLeave
-
-    End Sub
-    Private Sub picBoxNormalCheck_MouseEnter(sender As System.Object, e As System.EventArgs) Handles picBoxNormalCheck.MouseEnter
-
-    End Sub
-    Private Sub picBoxNormalCheck_Click(sender As System.Object, e As System.EventArgs) Handles picBoxNormalCheck.Click
-
-    End Sub
+    ' Als hieronder allerlei lege subs staan van mouse enter bij pictureboxen is dat normaal. 
+    ' We hebben ze niet zelf teogevoegd maar VB doet het af en toe automatisch.
 End Class

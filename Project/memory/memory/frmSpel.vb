@@ -1,19 +1,18 @@
 ﻿Public Class frmSpel
-    Dim Score As Integer = 0
-    Dim Juiste As Integer
+    Dim Score As Integer = 0 ' De score van de speler.
+    Dim Juiste As Integer ' Het aantal juiste paar dat de speler al heeft gevonden.
     ' Variabelen voor tijd
-    Dim TijdBezigMin As Integer = 0
-    Dim TijdBezigSec As Integer = 0
+    Dim TijdBezigMin As Integer = 0 ' Tijd in minuten.
+    Dim TijdBezigSec As Integer = 0 ' Tijd in seconden.
     ' ------
-    Dim AantalNodigeJuiste As Integer
-    Dim Afbeeldingen As New List(Of Image)
-    Dim Kaarten As New List(Of KeyValuePair(Of Integer, Image))
-    Dim AfbTeZien As New List(Of Image)
-    Dim GekliktePicBox As New List(Of PictureBox)
-    Dim AlleAfbeeldingen As New List(Of Image)
-    Dim Start As Boolean = False
-    Dim TijdelijkPics As New List(Of PictureBox)
-
+    Dim AantalNodigeJuiste As Integer ' Het aantal nodige juiste paar om een spel te winnen.
+    Dim Afbeeldingen As New List(Of Image) ' De gebruikte afbeeldingen in een spel.
+    Dim Kaarten As New List(Of KeyValuePair(Of Integer, Image)) ' KeyValue om kaarten te 'binden' aan een picturebox.
+    Dim AfbTeZien As New List(Of Image) ' Een lijst die de afbeeldingen die zichtbaar zijn bijhoudt.
+    Dim GekliktePicBox As New List(Of PictureBox) ' Een lijst die de aangeklikte picbox bijhoudt.
+    Dim AlleAfbeeldingen As New List(Of Image) ' Een lijst waar alle afbeeldingen in geladen worden. Hier worden dan afbeeldingen willekeurig uitgenomen.
+    Dim Start As Boolean = False ' Als true is dan worden alle kaarten verborgen en begint het spel.
+    Dim TijdelijkPics As New List(Of PictureBox) ' Hier worden de picboxen in opgeslagen om later nog even te gebruiken wanneer het spel start.
 
     Enum Graad  ' Enum voor de moeilijdsgraden
         Easy
@@ -59,7 +58,6 @@
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 4x6
         MaakVeld(4, 6)
-        frmLoadLevel.Close()
     End Sub
 
     Sub GraadMoeilijk()
@@ -72,14 +70,13 @@
         VoegAfbeeldingenToe(AantalNodigeJuiste)
         ' Veld van 5x6
         MaakVeld(5, 6)
-        frmLoadLevel.Close()
     End Sub
 
     Sub StelFormulierIn()
         ' Locatie van alle labels + btns op het formulier
         Const tussenPlaats As Byte = 35
         Me.AutoSize = False
-        Select Case frmMenu.MOEILIJKHEIDSGRAAD
+        Select Case frmMenu.MOEILIJKHEIDSGRAAD ' Op basis van welke moeilheidsgraad, moet het formulier een andere grootte hebben
             Case Graad.Easy
                 Me.Width = 1250
                 Me.Height = 750
@@ -91,6 +88,8 @@
                 Me.Height = 900
         End Select
         Me.Location = New Point(10, 10)
+
+        ' Alle labels een locatie, breedte, tekst, achtergrond,... geven Alle labels worden uitgeleind op de knop Menu
         btnMenu.Location = New Point(tussenPlaats, tussenPlaats)
 
         lblTweeAfbeeldingen.Location = New Point(btnMenu.Location.X, btnMenu.Width + (tussenPlaats * 2))
@@ -127,6 +126,7 @@
         ' De PictureBoxen maken en toevoegen aan de controls van het formulier
         Dim random As New Random()
         Dim nr As Byte = 0
+        ' Het veld maken
         For i = 0 To aantalRij - 1
             For j = 2 To aantalKolom + 1
                 Dim randomGetal As Integer = random.Next(Afbeeldingen.Count)
@@ -155,10 +155,11 @@
     End Sub
 
     Public Sub AfbeeldingenWeergevenVerbergen()
+        ' De afbeeldingen eerst laten zien en daarna verbergen
         TijdAllesZien.Interval = 4000       ' De tijd die je krijgt om de afbeeldingen te zien voor het spel start
         TijdAllesZien.Start()
         While Start = False
-            lblTweeAfbeeldingen.Text = "Het spel begint zometeen."
+            lblTweeAfbeeldingen.Text = "Het gaat beginnen."
             Application.DoEvents()
         End While
         For Each picbox As PictureBox In TijdelijkPics
@@ -207,12 +208,11 @@
     End Function
 
     Private Sub PictureBoxOnMouseClick(ByVal sender As PictureBox, ByVal e As System.EventArgs)
-        ' Als op een picturebox geklikt word, 
-        If AfbTeZien.Count = 1 Then
-            sender.Image = Kaarten(sender.Name).Value
+        If AfbTeZien.Count = 1 Then ' Controleren of er al een afbeeldingen te zien zijn anders (lijn 227)
+            sender.Image = Kaarten(sender.Name).Value ' als er al een te zien is, voegen we hier de andere toe
             AfbTeZien.Add(sender.Image)
             GekliktePicBox.Add(sender)
-            If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1), 50) Then
+            If AfbeeldingenVergelijken(AfbTeZien(0), AfbTeZien(1), 50) Then ' De afbeeldingen vergelijken m.b.v. de .Tag property
                 ' De afbeeldingen zijn gelijk
                 TijdAfbTonenGelijk.Start()
                 Score += 50
@@ -224,7 +224,7 @@
                 lblScore.Text = "Score: " & Score
             End If
             AfbTeZien.Clear()
-        Else
+        Else ' een afbeelding toevoegen aan de lijst
             sender.Image = Kaarten(sender.Name).Value
             GekliktePicBox.Add(sender)
             AfbTeZien.Add(sender.Image)
@@ -269,7 +269,7 @@
         ' Als alle paren gevonden zijn, vragen of ze naar het menu willen terugkeren of gewoon stoppen
         If Juiste = AantalNodigeJuiste Then
             TijdBezig.Stop()
-            My.Computer.Audio.Play(Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\applaus.wav")
+            'My.Computer.Audio.Play(Application.StartupPath.Remove(Application.StartupPath.Length - 10) & "\applaus.wav")
             MessageBox.Show("U heeft gewonnen." & vbCrLf & "U scoorde " & Score & " punten in " & lblTijdbezig.Text.Remove(0, 5) & vbCrLf & "Moeilijkheidsgraad: " & frmMenu.MOEILIJKHEIDSGRAAD.ToString, "Proficiat!", MessageBoxButtons.OK)
             ScoreOpslaan()
             Me.Close()
@@ -278,18 +278,28 @@
     End Sub
 
     Sub ScoreOpslaan()
+        ' De behaalde score met tijd en nickname opslaan in een .txt bestand (score opslaan in database was wel gelukt maar zorgde voor problemen met versie verschillen)
         Dim nickname As String = InputBox("Geef een nickname in: ", "Nickname voor scorebord")
         Dim bestandpad As String = frmMenu.PATH & "\Highscores.txt"
         Dim bestaandeTekst As String
         Dim reader As New System.IO.StreamReader(bestandpad)
+        ' De bestaande score eerst lezen om gegevensverlies te voorkomen
         bestaandeTekst = reader.ReadToEnd
         reader.Close()
         Dim writer As New System.IO.StreamWriter(bestandpad)
+        ' De nieuwe score bovenaan in het bestandje toevoegen
         writer.Write(nickname & ": " & Score & " op " & frmMenu.MOEILIJKHEIDSGRAAD.ToString & " in " & TijdBezigMin & ":" & TijdBezigSec & " min." & vbCrLf & bestaandeTekst)
         writer.Close()
         MessageBox.Show("Uw score is succesvol opgeslagen!")
-        Me.Close()
-        frmMenu.Show()
+        ' Vragen om de highscore te bekijken of anders terug te gaan naar het menu
+        If MessageBox.Show("Wilt u nu de highscores bekijken?", "Highscores", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            Me.Close()
+            frmHighscore.Show()
+        Else
+            Me.Close()
+            frmMenu.Show()
+        End If
+
     End Sub
 
     Private Sub btnMenu_Click(sender As System.Object, e As System.EventArgs) Handles btnMenu.Click
@@ -299,6 +309,7 @@
     End Sub
 
     Private Sub TijdBezig_Tick(sender As System.Object, e As System.EventArgs) Handles TijdBezig.Tick
+        ' De duur van een spelletje bijhouden
         TijdBezigSec += 1
         If TijdBezigSec = 60 Then
             TijdBezigMin += 1
@@ -308,7 +319,7 @@
     End Sub
 
     Private Sub TijdAllesZien_Tick(sender As System.Object, e As System.EventArgs) Handles TijdAllesZien.Tick
+        ' Als de tijd verstreken is om de afbeeldingen te kunnen zien moet het spel starten
         Start = True
     End Sub
-
 End Class

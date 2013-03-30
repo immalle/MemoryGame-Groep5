@@ -39,10 +39,12 @@ Partial Class frmSpel
         'lblTweeAfbeeldingen
         '
         Me.lblTweeAfbeeldingen.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTweeAfbeeldingen.Location = New System.Drawing.Point(119, 682)
+        Me.lblTweeAfbeeldingen.ForeColor = System.Drawing.Color.White
+        Me.lblTweeAfbeeldingen.Location = New System.Drawing.Point(25, 389)
         Me.lblTweeAfbeeldingen.Name = "lblTweeAfbeeldingen"
         Me.lblTweeAfbeeldingen.Size = New System.Drawing.Size(159, 44)
         Me.lblTweeAfbeeldingen.TabIndex = 1
+        Me.lblTweeAfbeeldingen.Text = "Label twee paren"
         '
         'TijdAfbTonenNietGelijk
         '
@@ -67,6 +69,7 @@ Partial Class frmSpel
         '
         Me.lblAantalParen.AutoSize = True
         Me.lblAantalParen.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAantalParen.ForeColor = System.Drawing.Color.White
         Me.lblAantalParen.Location = New System.Drawing.Point(8, 231)
         Me.lblAantalParen.Name = "lblAantalParen"
         Me.lblAantalParen.Size = New System.Drawing.Size(101, 20)
@@ -77,6 +80,7 @@ Partial Class frmSpel
         '
         Me.lblNodigeParen.AutoSize = True
         Me.lblNodigeParen.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNodigeParen.ForeColor = System.Drawing.Color.White
         Me.lblNodigeParen.Location = New System.Drawing.Point(155, 246)
         Me.lblNodigeParen.Name = "lblNodigeParen"
         Me.lblNodigeParen.Size = New System.Drawing.Size(105, 20)
@@ -87,6 +91,7 @@ Partial Class frmSpel
         '
         Me.lblTijdbezig.AutoSize = True
         Me.lblTijdbezig.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTijdbezig.ForeColor = System.Drawing.Color.White
         Me.lblTijdbezig.Location = New System.Drawing.Point(119, 288)
         Me.lblTijdbezig.Name = "lblTijdbezig"
         Me.lblTijdbezig.Size = New System.Drawing.Size(77, 20)
@@ -101,6 +106,7 @@ Partial Class frmSpel
         '
         Me.lblScore.AutoSize = True
         Me.lblScore.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblScore.ForeColor = System.Drawing.Color.White
         Me.lblScore.Location = New System.Drawing.Point(15, 322)
         Me.lblScore.Name = "lblScore"
         Me.lblScore.Size = New System.Drawing.Size(97, 20)
